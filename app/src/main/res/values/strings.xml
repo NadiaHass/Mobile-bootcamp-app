@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Mobile Bootcamp</string>
+
+    <string-array name="lessons_name">
+        <item>"TextView"</item>
+    </string-array>
+
+    <string-array name="java_code">
+        <item>protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+    }</item>
+    </string-array>
+
+    <string-array name="xml_code">
+        <item>&lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/text&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;</item>
+    </string-array>
+
+    <string-array name="result_fragment_name">
+        <item>"TextView"</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
