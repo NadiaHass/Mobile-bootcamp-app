@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/java"
-        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:icon="@drawable/java"
         android:title="Java"/>
 
     <item
         android:id="@+id/xml"
-        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:icon="@drawable/xml"
         android:title="Xml"/>
 
     <item
         android:id="@+id/result"
-        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:icon="@drawable/layout"
         android:title="Result"/>
 
 </menu>
