@@ -2,7 +2,7 @@
     <string name="app_name">Mobile Bootcamp</string>
 
     <string-array name="lessons_name">
-        <item>"TextView"</item>
+        <item>TextView</item>
     </string-array>
 
     <string-array name="java_code">
@@ -24,9 +24,9 @@
     </string-array>
 
     <string-array name="result_fragment_name">
-        <item>"TextView"</item>
+        <item>TextView</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

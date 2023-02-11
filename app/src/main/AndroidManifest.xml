@@ -13,14 +13,14 @@
         android:theme="@style/Theme.MobileBootcamp"
         tools:targetApi="31" >
         <activity
-            android:name=".LessonActivity"
+            android:name=".ui.activities.LessonActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LessonsActivity"
+            android:name=".ui.activities.LessonsActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

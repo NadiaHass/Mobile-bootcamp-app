@@ -1,6 +1,8 @@
 package com.example.mobilebootcamp.models;
 
-public class Lesson {
+import java.io.Serializable;
+
+public class Lesson implements Serializable {
 
     String name;
     String javaCode;
