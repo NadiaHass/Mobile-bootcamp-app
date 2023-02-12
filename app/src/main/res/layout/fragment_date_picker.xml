@@ -5,15 +5,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical"
-    tools:context=".ui.fragments.resultFragments.TextViewFragment">
+    tools:context=".ui.fragments.resultFragments.DatePickerFragment">
 
-    <TextView
-        android:id="@+id/tv_my_text"
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_get_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is textView"
+        android:textAllCaps="false"
+        android:text="Show date" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textColor="@color/black"
-        android:textSize="32sp" />
+        android:textSize="24sp" />
 
 </LinearLayout>

@@ -7,6 +7,19 @@
         <item>ImageView</item>
 
         <item>Button</item>
+
+        <item>EditText</item>
+
+        <item>CheckBox</item>
+
+        <item>RadioButton</item>
+
+        <item>Switch</item>
+
+        <item>ProgressBar</item>
+
+        <item>Date Picker</item>
+
     </string-array>
 
     <string-array name="java_code">
@@ -14,16 +27,43 @@
 
         <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_image_view); \n ImageView image = (ImageView) findViewById(R.id.imageView; \n \n}</item>
 
-        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_button); \n TextView textView = findViewById(R.id.tv_my_text); \nButton button = findViewById(R.id.btn_click_me); \nbutton.setOnClickListener(v ->{ \ntextView.setText("You clicked the button !"); \n}); \n \n}</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_button); \n TextView textView = findViewById(R.id.tv_my_text); \nButton button = findViewById(R.id.btn_click_me); \nbutton.setOnClickListener(v ->{ \ntextView.setText(\&quot;You clicked the button \&quot;); \n}); \n \n}</item>
 
+        <item>Button button = findViewById(R.id.btn_click); \nTextView textView = findViewById(R.id.tv_name); \nEditText editText = findViewById(R.id.editText); \n \nbutton.setOnClickListener(v -> { \nString name = editText.getText().toString(); \neditText.setText(\&quot; \&quot;); \n \ntextView.setText(name); \n});</item>
+
+        <item>CheckBox javaCheckBox = findViewById(R.id.cb_java);\n        CheckBox kotlinCheckBox = findViewById(R.id.cb_kotlin);\n        TextView textView = findViewById(R.id.tv_language_name);\n        Button submitButton = findViewById(R.id.btn_submit);\n\n        javaCheckBox.setChecked(true);\n \n        submitButton.setOnClickListener(v -> {\n            if (javaCheckBox.isChecked() &amp;&amp; kotlinCheckBox.isChecked()){\n                textView.setText(&quot;You checked java and kotlin&quot;);\n            }else if(javaCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java\&quot;);\n            }else if(kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked kotlin\&quot;);</item>
+
+        <item>RadioButton redRadioButton = findViewById(R.id.rb_red); \n Button submitButton = findViewById(R.id.btn_submit); \nLinearLayout layout = findViewById(R.id.linearLayout); \n \nsubmitButton.setOnClickListener(v -> { \nif (redRadioButton.isChecked()){ \nlayout.setBackgroundColor(Color.RED); \n redRadioButton.setChecked(false); \n }else{ \nlayout.setBackgroundColor(Color.WHITE); \n} \n}); \n</item>
+
+        <item>TextView textView = findViewById(R.id.tv_on_off); \nSwitchCompat switchOnOff = findViewById(R.id.switch_on_off); \n \n switchOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { \n @Override \npublic void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { \n if(isChecked) \n textView.setText(\&quot;ON\&quot;); \n else textView.setText(\&quot;OFF\&quot;); \n} \n}); \n</item>
+
+        <item>ProgressBar progressBar = findViewById(R.id.progressBar);</item>
+
+        <item>DatePicker datePicker = findViewById(R.id.datePicker); \n TextView textView = findViewById(R.id.tv_date); \n Button getDateButton = findViewById(R.id.btn_get_date); \n \n// set the initial date of the DatePicker \nCalendar calendar = Calendar.getInstance(); \ndatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), null); \ngetDateButton.setOnClickListener(v -&gt; { \nint year = datePicker.getYear(); \nint month = datePicker.getMonth(); \nint day = datePicker.getDayOfMonth(); \n \ntextView.setText(year + \&quot; / \&quot; + month + \&quot; / \&quot; + day); \n});</item>
     </string-array>
 
+
+
     <string-array name="xml_code">
-        <item>    &lt;TextView \nandroid:id=&quot;@+id/tv_my_text&quot;android:layout_width=&quot;match_parent&quot; \nandroid:layout_height=&quot;match_parent&quot; \nandroid:text=&quot;This is textView&quot; \nandroid:layout_margin=&quot;16dp&quot; \nandroid:textColor=&quot;@color/black&quot; \nandroid:textSize=&quot;32sp&quot; \n \n/&gt;</item>
+        <item>&lt;TextView \nandroid:id=\&quot;@+id/tv_my_text\&quot;android:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;This is textView\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;32sp\&quot; \n \n/&gt;</item>
 
-        <item>    &lt;ImageView \n android:id=&quot;@+id/imageView&quot;  \n android:layout_width=&quot;300dp&quot;  \nandroid:layout_height=&quot;300dp&quot; \nandroid:layout_margin=&quot;32dp&quot; \nandroid:src=&quot;@drawable/image&quot; /&gt;</item>
+        <item>&lt;ImageView \n android:id=\&quot;@+id/imageView\&quot;  \n android:layout_width=\&quot;300dp\&quot;  \nandroid:layout_height=\&quot;300dp\&quot; \nandroid:layout_margin=\&quot;32dp\&quot; \nandroid:src=\&quot;@drawable/image\&quot; /&gt;</item>
 
-        <item>&lt;LinearLayout xmlns:android=&quot; \n http://schemas.android.com/apk/res/android&quot; \nxmlns:tools=&quot;http://schemas.android.com/tools&quot; \nandroid:layout_width=&quot;match_parent&quot; \nandroid:layout_height=&quot;match_parent&quot; \nandroid:orientation=&quot;vertical&quot; \ntools:context=&quot;.ui.fragments.resultFragments.ButtonFragment&quot;&gt; \n \n&lt;TextView \nandroid:id=&quot;@+id/tv_my_text&quot; \nandroid:layout_width=&quot;wrap_content&quot; \nandroid:layout_height=&quot;wrap_content&quot; \nandroid:layout_marginTop=&quot;32dp&quot; \nandroid:textSize=&quot;24sp&quot; \nandroid:textColor=&quot;@color/black&quot; \nandroid:layout_marginStart=&quot;64dp&quot;/&gt; \n \n&lt;Button \nandroid:id=&quot;@+id/btn_click_me&quot; \nandroid:layout_width=&quot;wrap_content&quot; \nandroid:layout_height=&quot;wrap_content&quot; \nandroid:layout_marginTop=&quot;32dp&quot; \nandroid:layout_marginStart=&quot;64dp&quot; \n android:text=&quot;Click me !&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout xmlns:android=\&quot; \n http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n android:gravity=\&quot;center_horizontal|center_vertical\&quot; \n tools:context=\&quot;.ui.fragments.resultFragments.ButtonFragment\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_my_text\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click_me\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;  \n android:text=\&quot;Click me !\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \n tools:context=\&quot;.ui.fragments.resultFragments.EditTextFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp&quot; /&gt; \n \n&lt;EditText \nandroid:id=\&quot;@+id/editText\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;8dp\&quot; \nandroid:hint=\&quot;Hi type your name and press ok !\&quot; \nandroid:minHeight=\&quot;48dp\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Click me !\&quot; /&gt; \n \n&lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.CheckBoxFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_java\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Java\&quot;/&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_kotlin\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Kotlin\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout \n android:id=\&quot;@+id/linearLayout\&quot; \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RadioButtonFragment\&quot;&gt; \n \n&lt;RadioButton \nandroid:id=\&quot;@+id/rb_red&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Red background\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n&lt;/LinearLayout&gt;</item>
+
+        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.SwitchFragment\&quot;&gt; \n \n &lt;TextView \nandroid:id=\&quot;@+id/tv_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;androidx.appcompat.widget.SwitchCompat \nandroid:id=\&quot;@+id/switch_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;/&gt; \n&lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.DatePickerFragment\&quot;&gt; \n \n\&lt;DatePicker \nandroid:id=\&quot;@+id/datePicker\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_get_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Show date\&quot; /&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
+
+
     </string-array>
 
     <string-array name="result_fragment_name">
@@ -33,6 +73,17 @@
 
         <item>ButtonFragment</item>
 
+        <item>EditTextFragment</item>
+
+        <item>CheckBoxFragment</item>
+
+        <item>RadioButtonFragment</item>
+
+        <item>SwitchFragment</item>
+
+        <item>ProgressBarFragment</item>
+
+        <item>DatePickerFragment</item>
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

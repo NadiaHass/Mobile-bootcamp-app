@@ -5,18 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical"
-    tools:context=".ui.fragments.resultFragments.ButtonFragment">
+    tools:context=".ui.fragments.resultFragments.EditTextFragment">
 
     <TextView
-        android:id="@+id/tv_my_text"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="@color/black"/>
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Hi type your name and press ok !"
+        android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/btn_click_me"
+        android:id="@+id/btn_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAllCaps="false"
         android:text="Click me !" />
+
+
 </LinearLayout>
