@@ -23,6 +23,16 @@ public class ModulesActivity extends AppCompatActivity {
         });
 
         binding.btnLayouts.setOnClickListener(v->{
+//            openLessonsActivity(8 , 14);
+        });
+
+        binding.btnContainers.setOnClickListener(v -> {
+//            openLessonsActivity(14 , );
+
+        });
+
+        binding.btnMenus.setOnClickListener(v -> {
+
         });
 
     }
