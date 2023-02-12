@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.databinding.FragmentXmlCodeBinding;
 
+import io.github.kbiakov.codeview.adapters.Options;
+import io.github.kbiakov.codeview.highlight.ColorTheme;
+
 public class XmlCodeFragment extends Fragment {
     private FragmentXmlCodeBinding binding;
 
@@ -21,9 +24,12 @@ public class XmlCodeFragment extends Fragment {
                               Bundle savedInstanceState) {
         binding = FragmentXmlCodeBinding.inflate(inflater, container, false);
 
-        String javaCode = getArguments().getString("lesson");
+        String xmlCode = getArguments().getString("lesson");
 
-        binding.codeView.setCode(javaCode , "xml");
+        binding.codeView.setOptions(Options.Default.get(getActivity())
+                .withLanguage("xml")
+                .withCode(xmlCode)
+                .withTheme(ColorTheme.MONOKAI));
 
         return binding.getRoot();
     }

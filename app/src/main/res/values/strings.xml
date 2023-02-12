@@ -3,28 +3,36 @@
 
     <string-array name="lessons_name">
         <item>TextView</item>
+
+        <item>ImageView</item>
+
+        <item>Button</item>
     </string-array>
 
     <string-array name="java_code">
-        <item>protected void onCreate(Bundle savedInstanceState) { \n
-        super.onCreate(savedInstanceState); \n
-        setContentView(R.layout.activity_splash); \n
-    }</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_text_view); \nTextView textView = (TextView) findViewById(R.id.tv_my_text); \n \n}</item>
+
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_image_view); \n ImageView image = (ImageView) findViewById(R.id.imageView; \n \n}</item>
+
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_button); \n TextView textView = findViewById(R.id.tv_my_text); \nButton button = findViewById(R.id.btn_click_me); \nbutton.setOnClickListener(v ->{ \ntextView.setText("You clicked the button !"); \n}); \n \n}</item>
+
     </string-array>
 
     <string-array name="xml_code">
-        <item>&lt;TextView \n
-        android:layout_width=&quot;wrap_content&quot; \n
-        android:layout_height=&quot;wrap_content&quot; \n
-        android:text=&quot;@string/text&quot; \n
-        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
-        app:layout_constraintEnd_toEndOf=&quot;parent&quot; \n
-        app:layout_constraintStart_toStartOf=&quot;parent&quot; \n
-        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;</item>
+        <item>    &lt;TextView \nandroid:id=&quot;@+id/tv_my_text&quot;android:layout_width=&quot;match_parent&quot; \nandroid:layout_height=&quot;match_parent&quot; \nandroid:text=&quot;This is textView&quot; \nandroid:layout_margin=&quot;16dp&quot; \nandroid:textColor=&quot;@color/black&quot; \nandroid:textSize=&quot;32sp&quot; \n \n/&gt;</item>
+
+        <item>    &lt;ImageView \n android:id=&quot;@+id/imageView&quot;  \n android:layout_width=&quot;300dp&quot;  \nandroid:layout_height=&quot;300dp&quot; \nandroid:layout_margin=&quot;32dp&quot; \nandroid:src=&quot;@drawable/image&quot; /&gt;</item>
+
+        <item>&lt;LinearLayout xmlns:android=&quot; \n http://schemas.android.com/apk/res/android&quot; \nxmlns:tools=&quot;http://schemas.android.com/tools&quot; \nandroid:layout_width=&quot;match_parent&quot; \nandroid:layout_height=&quot;match_parent&quot; \nandroid:orientation=&quot;vertical&quot; \ntools:context=&quot;.ui.fragments.resultFragments.ButtonFragment&quot;&gt; \n \n&lt;TextView \nandroid:id=&quot;@+id/tv_my_text&quot; \nandroid:layout_width=&quot;wrap_content&quot; \nandroid:layout_height=&quot;wrap_content&quot; \nandroid:layout_marginTop=&quot;32dp&quot; \nandroid:textSize=&quot;24sp&quot; \nandroid:textColor=&quot;@color/black&quot; \nandroid:layout_marginStart=&quot;64dp&quot;/&gt; \n \n&lt;Button \nandroid:id=&quot;@+id/btn_click_me&quot; \nandroid:layout_width=&quot;wrap_content&quot; \nandroid:layout_height=&quot;wrap_content&quot; \nandroid:layout_marginTop=&quot;32dp&quot; \nandroid:layout_marginStart=&quot;64dp&quot; \n android:text=&quot;Click me !&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
     </string-array>
 
     <string-array name="result_fragment_name">
         <item>TextViewFragment</item>
+
+        <item>ImageViewFragment</item>
+
+        <item>ButtonFragment</item>
+
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -7,18 +7,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mobilebootcamp.R;
 
-public class TextViewFragment extends Fragment {
+public class ButtonFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_button, container, false);
 
-        TextView textView = (TextView) container.findViewById(R.id.tv_my_text);
+        TextView textView = (TextView) view.findViewById(R.id.tv_my_text);
+        Button button = (Button) view.findViewById(R.id.btn_click_me);
 
-        return inflater.inflate(R.layout.fragment_text_view, container, false);
+        button.setOnClickListener(v -> textView.setText("You clicked the button !"));
+
+        return view;
     }
 }
