@@ -19,11 +19,10 @@ public class ModulesActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.btnWidgets.setOnClickListener(v -> {
-            openLessonsActivity(0 , 1);
+            openLessonsActivity(0 , 8);
         });
 
         binding.btnLayouts.setOnClickListener(v->{
-
         });
 
     }

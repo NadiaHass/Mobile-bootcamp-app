@@ -6,16 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.adapters.LessonsAdapter;
 import com.example.mobilebootcamp.databinding.ActivityLessonsBinding;
-import com.example.mobilebootcamp.databinding.ActivityModulesBinding;
 import com.example.mobilebootcamp.models.Lesson;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LessonsActivity extends AppCompatActivity {
     String[] xmlCodeList ;
@@ -35,11 +32,11 @@ public class LessonsActivity extends AppCompatActivity {
 
         getListsFromStringArray();
 
-        setupRecyclerView();
+        setupRecyclerView(start , end);
     }
 
-    private void setupRecyclerView() {
-        ArrayList<Lesson> lessons = getLessons(0 , lessonsNameList.length);
+    private void setupRecyclerView(int start, int end) {
+        ArrayList<Lesson> lessons = getLessons(start , end);
         LessonsAdapter lessonsAdapter = new LessonsAdapter(lessons , this);
         binding.rvLessons.setLayoutManager(new LinearLayoutManager(this , RecyclerView.VERTICAL , false));
         binding.rvLessons.setAdapter(lessonsAdapter);
