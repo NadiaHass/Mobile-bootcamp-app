@@ -56,6 +56,25 @@
 
         <item>Fragments</item>
 
+        <item>Anim1</item>
+
+        <item>Anim2</item>
+
+        <item>Anim3</item>
+
+        <item>Anim4</item>
+
+        <item>List View</item>
+
+        <item>Recycler View</item>
+
+        <item>SQLite</item>
+
+        <item>LifeCycle</item>
+
+        <item>ViewModel</item>
+
+        <item>Room Database</item>
 
     </string-array>
 
@@ -113,6 +132,27 @@
         <item>AlertDialogFragment java</item>
 
         <item>FragmentsFragment java</item>
+
+        <item>Anim1Fragment java</item>
+
+        <item>Anim2Fragment java</item>
+
+        <item>Anim3Fragment java</item>
+
+        <item>Anim4Fragment java</item>
+
+        <item>ListViewFragment java</item>
+
+        <item>RecyclerViewFragment java</item>
+
+        <item>SQLiteFragment java</item>
+
+        <item>LifeCycleFragment java</item>
+
+        <item>ViewModelFragment java</item>
+
+        <item>RoomDbFragment java</item>
+
 
     </string-array>
 
@@ -178,6 +218,25 @@
 
         <item>FragmentsFragment xml</item>
 
+        <item>Anim1Fragment xml</item>
+
+        <item>Anim2Fragment xml</item>
+
+        <item>Anim3Fragment xml</item>
+
+        <item>Anim4Fragment xml</item>
+
+        <item>ListViewFragment xml</item>
+
+        <item>RecyclerViewFragment xml</item>
+
+        <item>SQLiteFragment xml</item>
+
+        <item>LifeCycleFragment xml</item>
+
+        <item>ViewModelFragment xml</item>
+
+        <item>RoomDbFragment xml</item>
 
     </string-array>
 
@@ -235,6 +294,26 @@
         <item>AlertDialogFragment</item>
 
         <item>FragmentsFragment</item>
+
+        <item>Anim1Fragment</item>
+
+        <item>Anim2Fragment</item>
+
+        <item>Anim3Fragment</item>
+
+        <item>Anim4Fragment</item>
+
+        <item>ListViewFragment</item>
+
+        <item>RecyclerViewFragment</item>
+
+        <item>SQLiteFragment</item>
+
+        <item>LifeCycleFragment</item>
+
+        <item>ViewModelFragment</item>
+
+        <item>RoomDbFragment</item>
 
     </string-array>
 

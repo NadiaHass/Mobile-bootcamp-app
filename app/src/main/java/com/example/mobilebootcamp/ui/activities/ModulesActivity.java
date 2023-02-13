@@ -44,12 +44,12 @@ public class ModulesActivity extends AppCompatActivity {
         modules.add(new Module("Intent" , 18 , 22 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Menu & dialogs" , 22 , 26 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Fragments" , 26 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Styles & animation" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Dynamic views" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("SQLite" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Architecture components" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Room database" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Firebase" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Styles & animation" , 27 , 31 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Dynamic views" , 31 , 33 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("SQLite" , 33 , 34 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Architecture components" , 34 , 36 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Room database" , 36 , 37 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Firebase" , 37 , 37 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         return modules;
     }
 
