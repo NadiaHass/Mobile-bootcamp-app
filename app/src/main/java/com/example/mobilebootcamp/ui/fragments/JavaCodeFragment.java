@@ -29,7 +29,7 @@ public class JavaCodeFragment extends Fragment {
         binding.codeView.setOptions(Options.Default.get(getActivity())
                 .withLanguage("java")
                 .withCode(javaCode)
-                .withTheme(ColorTheme.MONOKAI));
+                .withTheme(ColorTheme.SOLARIZED_LIGHT));
 
         return binding.getRoot();
     }

@@ -1,6 +1,7 @@
 package com.example.mobilebootcamp.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +30,7 @@ public class LessonsActivity extends AppCompatActivity {
 
         int start = getIntent().getIntExtra("start" , 0);
         int end = getIntent().getIntExtra("end" , 0);
-
+        String moduleName = getIntent().getStringExtra("name");
         getListsFromStringArray();
 
         setupRecyclerView(start , end);
@@ -38,7 +39,7 @@ public class LessonsActivity extends AppCompatActivity {
     private void setupRecyclerView(int start, int end) {
         ArrayList<Lesson> lessons = getLessons(start , end);
         LessonsAdapter lessonsAdapter = new LessonsAdapter(lessons , this);
-        binding.rvLessons.setLayoutManager(new LinearLayoutManager(this , RecyclerView.VERTICAL , false));
+        binding.rvLessons.setLayoutManager(new GridLayoutManager(this ,2 , GridLayoutManager.VERTICAL , false));
         binding.rvLessons.setAdapter(lessonsAdapter);
     }
 

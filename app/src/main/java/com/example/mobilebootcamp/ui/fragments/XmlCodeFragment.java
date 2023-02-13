@@ -29,7 +29,7 @@ public class XmlCodeFragment extends Fragment {
         binding.codeView.setOptions(Options.Default.get(getActivity())
                 .withLanguage("xml")
                 .withCode(xmlCode)
-                .withTheme(ColorTheme.MONOKAI));
+                .withTheme(ColorTheme.SOLARIZED_LIGHT));
 
         return binding.getRoot();
     }
