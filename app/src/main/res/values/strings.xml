@@ -87,7 +87,7 @@
 
         <item>Button button = findViewById(R.id.btn_click); \nTextView textView = findViewById(R.id.tv_name); \nEditText editText = findViewById(R.id.editText); \n \nbutton.setOnClickListener(v -> { \nString name = editText.getText().toString(); \neditText.setText(\&quot; \&quot;); \n \ntextView.setText(name); \n});</item>
 
-        <item>CheckBox javaCheckBox = findViewById(R.id.cb_java);\n        CheckBox kotlinCheckBox = findViewById(R.id.cb_kotlin);\n        TextView textView = findViewById(R.id.tv_language_name);\n        Button submitButton = findViewById(R.id.btn_submit);\n\n        javaCheckBox.setChecked(true);\n \n        submitButton.setOnClickListener(v -> {\n            if (javaCheckBox.isChecked() &amp;&amp; kotlinCheckBox.isChecked()){\n                textView.setText(&quot;You checked java and kotlin&quot;);\n            }else if(javaCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java\&quot;);\n            }else if(kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked kotlin\&quot;);</item>
+        <item>CheckBox javaCheckBox = findViewById(R.id.cb_java);\n        CheckBox kotlinCheckBox = findViewById(R.id.cb_kotlin);\n        TextView textView = findViewById(R.id.tv_language_name);\n        Button submitButton = findViewById(R.id.btn_submit);\n\n        javaCheckBox.setChecked(true);\n \n        submitButton.setOnClickListener(v -> {\n            if (javaCheckBox.isChecked() &amp;&amp; kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java and kotlin\&quot;);\n            }else if(javaCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java\&quot;);\n            }else if(kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked kotlin\&quot;);</item>
 
         <item>RadioButton redRadioButton = findViewById(R.id.rb_red); \n Button submitButton = findViewById(R.id.btn_submit); \nLinearLayout layout = findViewById(R.id.linearLayout); \n \nsubmitButton.setOnClickListener(v -> { \nif (redRadioButton.isChecked()){ \nlayout.setBackgroundColor(Color.RED); \n redRadioButton.setChecked(false); \n }else{ \nlayout.setBackgroundColor(Color.WHITE); \n} \n}); \n</item>
 
@@ -164,27 +164,171 @@
 
         <item>&lt;LinearLayout xmlns:android=\&quot; \n http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n android:gravity=\&quot;center_horizontal|center_vertical\&quot; \n tools:context=\&quot;.ui.fragments.resultFragments.ButtonFragment\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_my_text\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click_me\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;  \n android:text=\&quot;Click me !\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \n tools:context=\&quot;.ui.fragments.resultFragments.EditTextFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp&quot; /&gt; \n \n&lt;EditText \nandroid:id=\&quot;@+id/editText\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;8dp\&quot; \nandroid:hint=\&quot;Hi type your name and press ok !\&quot; \nandroid:minHeight=\&quot;48dp\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Click me !\&quot; /&gt; \n \n&lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \n tools:context=\&quot;.ui.fragments.resultFragments.EditTextFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;EditText \nandroid:id=\&quot;@+id/editText\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;8dp\&quot; \nandroid:hint=\&quot;Hi type your name and press ok !\&quot; \nandroid:minHeight=\&quot;48dp\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Click me !\&quot; /&gt; \n \n&lt;/LinearLayout&gt; \n</item>
 
         <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.CheckBoxFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_java\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Java\&quot;/&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_kotlin\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Kotlin\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n android:id=\&quot;@+id/linearLayout\&quot; \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RadioButtonFragment\&quot;&gt; \n \n&lt;RadioButton \nandroid:id=\&quot;@+id/rb_red&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Red background\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n&lt;/LinearLayout&gt;</item>
+        <item>&lt;LinearLayout \n android:id=\&quot;@+id/linearLayout\&quot; \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RadioButtonFragment\&quot;&gt; \n \n&lt;RadioButton \nandroid:id=\&quot;@+id/rb_red\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Red background\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n&lt;/LinearLayout&gt;</item>
 
         <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.SwitchFragment\&quot;&gt; \n \n &lt;TextView \nandroid:id=\&quot;@+id/tv_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;androidx.appcompat.widget.SwitchCompat \nandroid:id=\&quot;@+id/switch_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;/&gt; \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
 
         <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.DatePickerFragment\&quot;&gt; \n \n\&lt;DatePicker \nandroid:id=\&quot;@+id/datePicker\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_get_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Show date\&quot; /&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
 
         <item>FrameLayoutFragment xml</item>
 
-        <item>LinearLayoutFragment xml</item>
+        <item>&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot;?&gt; \n
+&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    android:orientation=\&quot;vertical\&quot; \n
+    android:padding=\&quot;10dp\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.LinearLayoutFragment\&quot;&gt; \n
+    &lt;LinearLayout \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:orientation=\&quot;vertical\&quot;&gt; \n
+        &lt;TextView \n
+            android:id=\&quot;@+id/node1\&quot;
+            android:layout_width=\&quot;wrap_content\&quot;
+            android:layout_height=\&quot;wrap_content\&quot;
+            android:text=\&quot;Vertical Linear Layout\&quot;
+            android:textSize=\&quot;18sp\&quot;
+            android:textStyle=\&quot;bold\&quot;
+            android:textColor=\&quot;@color/black\&quot;
+            android:layout_margin=\&quot;5dp\&quot;
+            /&gt; \n
+        &lt;TextView \n
+            android:id=\&quot;@+id/userName0\&quot;
+            android:layout_width=\&quot;wrap_content\&quot;
+            android:layout_height=\&quot;wrap_content\&quot;
+            android:text=\&quot;User Name\&quot;
+            android:textSize=\&quot;18sp\&quot;
+            android:layout_margin=\&quot;5dp\&quot;
+            /&gt; \n
+
+        &lt;TextView \n
+            android:id=\&quot;@+id/phoneNumber0\&quot;
+            android:layout_width=\&quot;wrap_content\&quot;
+            android:layout_height=\&quot;wrap_content\&quot;
+            android:text=\&quot;Phone Number\&quot;
+            android:textSize=\&quot;18sp\&quot;
+            android:layout_margin=\&quot;5dp\&quot;
+            /&gt; \n
+    &lt;/LinearLayout&gt; \n
+    &lt;LinearLayout \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;match_parent\&quot;  \n
+        android:orientation=\&quot;horizontal\&quot;&gt; \n
+        &lt;TextView \n
+            android:id=\&quot;@+id/node2\&quot; \n
+            android:layout_width=\&quot;wrap_content\&quot; \n
+            android:layout_height=\&quot;wrap_content\&quot; \n
+            android:text=\&quot;Horizantal Linear Layout\&quot; \n
+            android:textSize=\&quot;16sp\&quot; \n
+            android:textStyle=\&quot;bold\&quot; \n
+            android:textColor=\&quot;@color/black\&quot; \n
+            android:layout_margin=\&quot;15dp\&quot;
+            /&gt; \n
+        &lt;TextView \n
+            android:id=\&quot;@+id/userName1\&quot; \n
+            android:layout_width=\&quot;wrap_content\&quot; \n
+            android:layout_height=\&quot;wrap_content\&quot; \n
+            android:text=\&quot;User Name\&quot; \n
+            android:textSize=\&quot;16sp\&quot; \n
+            android:layout_margin=\&quot;15dp\&quot;
+            /&gt; \n
+
+
+        &lt;TextView \n
+            android:id=\&quot;@+id/phoneNumber1\&quot; \n
+            android:layout_width=\&quot;wrap_content\&quot; \n
+            android:layout_height=\&quot;wrap_content\&quot; \n
+            android:text=\&quot;Phone\&quot; \n
+            android:textSize=\&quot;16sp\&quot; \n
+            android:layout_margin=\&quot;15dp\&quot;
+
+            /&gt; \n
+    &lt;/LinearLayout&gt; \n
+&lt;/LinearLayout&gt; \n \n
+</item>
 
         <item>RelativeLayoutFragment xml</item>
 
         <item>GridLayoutFragment xml</item>
 
-        <item>ConstraintLayoutFragment xml</item>
+        <item>&lt;?xml version=\&quot;1.0\&quot; encoding\&quot;utf-8\&quot;?&gt; \n
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;
+
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    android:padding=\&quot;10dp\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.ConstraintLayoutFragment\&quot;&gt; \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/no_change\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:text=\&quot;No Change\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;26sp\&quot;
+         /&gt; \n
+    &lt;TextView \n
+        android:id=\&quot;@+id/center_in_parent\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:text=\&quot;Center in parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;26sp\&quot; /&gt; \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/under_center_left\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:text=\&quot;Under center and to the parent left\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        android:textSize=\&quot;18sp\&quot; \n
+        app:layout_constraintTop_toBottomOf=\&quot;@+id/center_in_parent\&quot; /&gt; \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/end_of_parent\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot; \n
+        android:text=\&quot;End of parent\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;26sp\&quot; /&gt; \n
+    &lt;TextView \n
+        android:id=\&quot;@+id/center_bottom\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:text=\&quot;Center and the bottom\&quot; \n
+        android:layout_margin=\&quot;16dp\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        android:textSize=\&quot;26sp\&quot; /&gt; \n
+    &lt;TextView \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        app:layout_constraintTop_toBottomOf=\&quot;@id/center_in_parent\&quot; \n
+        app:layout_constraintBottom_toTopOf=\&quot;@id/center_bottom\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        android:textSize=\&quot;22sp\&quot; \n
+        android:text=\&quot;Between center and center bottom\&quot; \n
+        /&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n \n</item>
 
         <item>CoordinateLayoutFragment xml</item>
 

@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".ui.fragments.resultFragments.ConstraintLayoutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/no_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Change"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        />
+    <TextView
+        android:id="@+id/center_in_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Center in parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:textSize="26sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/under_center_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Under center and to the parent left"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/center_in_parent" />
+
+    <TextView
+        android:id="@+id/end_of_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="End of parent"
+        android:textColor="@color/black"
+        android:textSize="26sp" />
+    <TextView
+        android:id="@+id/center_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Center and the bottom"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="26sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/center_in_parent"
+        app:layout_constraintBottom_toTopOf="@id/center_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="22sp"
+        android:text="Between center and center bottom"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
