@@ -143,7 +143,63 @@
 
         <item>ListViewFragment java</item>
 
-        <item>RecyclerViewFragment java</item>
+        <item> // MainActivity.java \n \n   ArrayList&lt;String&gt; languages = new ArrayList&lt;&gt;(); \n
+        languages.add(\&quot;Java\&quot;); \n
+        languages.add(\&quot;Kotlin\&quot;); \n
+        languages.add(\&quot;C++\&quot;); \n
+        languages.add(\&quot;Python\&quot;); \n
+        languages.add(\&quot;Ruby\&quot;); \n
+        languages.add(\&quot;C#\&quot;); \n
+        languages.add(\&quot;Php\&quot;); \n
+        languages.add(\&quot;Swift\&quot;); \n
+        languages.add(\&quot;Go\&quot;); \n
+        languages.add(\&quot;Pascal\&quot;); \n
+        languages.add(\&quot;Delphi\&quot;); \n \n
+        RecyclerView recyclerView =  view.findViewById(R.id.rv_languages); \n
+        LanguagesAdapter languagesAdapter = new LanguagesAdapter(languages); \n
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() ,  \n
+RecyclerView.VERTICAL , false)); \n
+        recyclerView.setAdapter(languagesAdapter); \n \n
+
+            // LanguagesAdapter.java \n\n
+            public class LanguagesAdapter extends \n
+RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
+    private ArrayList&lt;String&gt; mLanguageList; \n
+
+    public LanguagesAdapter(ArrayList&lt;String&gt; mLanguageList) { \n
+        this.mLanguageList = mLanguageList; \n
+    }\n \n
+
+
+    @NonNull \n
+    @Override \n
+    public LanguagesAdapter.LanguageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { \n
+        return new LanguagesAdapter.LanguageViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.languages_rv_item , parent , false)); \n
+    } \n \n
+
+    @Override \n
+    public void onBindViewHolder(@NonNull LanguagesAdapter.LanguageViewHolder holder, int position) { \n
+        holder.languageName.setText(mLanguageList.get(position)); \n
+        holder.itemView.setOnClickListener(v -&gt; { \n
+            // put here the code if item is clicked \n
+        }); \n
+    } \n \n
+
+    @Override \n
+    public int getItemCount() { \n
+        return mLanguageList.size(); \n
+    } \n \n
+
+    public static class LanguageViewHolder extends RecyclerView.ViewHolder{ \n
+        public TextView languageName; \n
+        public LanguageViewHolder(@NonNull View itemView) { \n
+            super(itemView); \n
+
+            languageName = itemView.findViewById(R.id.tv_language); \n
+        } \n
+    } \n
+} \n
+</item>
 
         <item>SQLiteFragment java</item>
 
@@ -208,12 +264,6 @@
 
         <item>ContextMenuFragment xml</item>
 
-        <item>OptionMenuFragment xml</item>
-
-        <item>PopupMenuFragment xml</item>
-
-        <item>ContextMenuFragment xml</item>
-
         <item>AlertDialogFragment xml</item>
 
         <item>FragmentsFragment xml</item>
@@ -228,7 +278,48 @@
 
         <item>ListViewFragment xml</item>
 
-        <item>RecyclerViewFragment xml</item>
+        <item>
+            //activity_main.xml \n \n
+            &lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n
+    &lt;androidx.recyclerview.widget.RecyclerView \n
+        android:id=\&quot;@+id/rv_languages\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;match_parent\&quot; /&gt; \n
+
+&lt;/FrameLayout&gt; \n \n
+            // languages_rv_item.xml \n \n
+&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot;&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_language\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:padding=\&quot;8dp\&quot; \n \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n
+
+    &lt;View \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;1dp\&quot; \n
+        android:background=\&quot;@color/black\&quot; \n
+        android:layout_marginTop=\&quot;16dp\&quot; \n
+        app:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n
+        </item>
 
         <item>SQLiteFragment xml</item>
 
