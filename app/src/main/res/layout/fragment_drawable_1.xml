@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.resultFragments.CompDrawFragment">
+    <!-- TODO: Update blank fragment layout -->
+    <CheckBox
+        android:id="@+id/view_0"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:text="0"
+        android:buttonTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/view_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/selector"/>
+    <TextView
+        android:id="@+id/view_1"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:text="1"
+        android:gravity="center"
+        android:background="@drawable/layers"
+        app:layout_constraintTop_toBottomOf="@id/view_0"
+        app:layout_constraintBottom_toTopOf="@id/view_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/view_2"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:text="2"
+        android:gravity="center"
+        android:background="@drawable/animdraw"
+        app:layout_constraintTop_toBottomOf="@id/view_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

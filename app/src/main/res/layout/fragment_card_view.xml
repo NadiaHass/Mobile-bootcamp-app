@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+   android:gravity="center"
     tools:context=".ui.fragments.resultFragments.CardViewFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/color1"
+        >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center
+"
+            android:text="Simple example"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+     app:cardBackgroundColor="@color/color1"
+    >
 
-</FrameLayout>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Card View with radius"
+            android:textColor="@color/white"
+            android:textSize="18sp"></TextView>
+</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:cardElevation="15dp"
+        app:cardBackgroundColor="@color/color1"
+        >
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Card View with radius and elevation"
+            android:textColor="@color/white"
+            android:textSize="18sp"></TextView>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:cardElevation="15dp"
+        app:cardBackgroundColor="@color/color1"
+
+       android:outlineSpotShadowColor="@color/color3"
+        >
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Card View elevation shodow changed"
+            android:textColor="@color/white"
+            android:textSize="18sp"></TextView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

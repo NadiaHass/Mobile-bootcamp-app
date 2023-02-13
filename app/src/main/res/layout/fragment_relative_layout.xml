@@ -1,14 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.resultFragments.RelativeLayoutFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/view_0"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/color4"
+        android:text="0" />
+    <Button
+        android:id="@+id/view_1"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/color4"
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:text="1" />
+    <Button
+        android:id="@+id/view_2"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/color4"
+        android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
+        android:text="2" />
+    <Button
+        android:id="@+id/view_3"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/color4"
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="3" />
+    <Button
+        android:id="@+id/view_4"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/color5"
+        android:text="4" />
+    <Button
+        android:id="@+id/view_5"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignTop="@id/view_4"
+        android:backgroundTint="@color/color1"
+        android:text="5" />
+    <Button
+        android:id="@+id/view_6"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignBottom="@id/view_4"
+        android:backgroundTint="@color/color1"
+        android:text="6" />
+    <Button
+        android:id="@+id/view_7"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/color1"
+        android:textAllCaps="false"
+        android:layout_alignBaseline="@id/view_4"
+        android:text="7" />
+    <Button
+        android:id="@+id/view_8"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignLeft="@id/view_4"
+        android:backgroundTint="@color/color1"
+        android:text="8" />
+    <Button
+        android:id="@+id/view_9"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignRight="@id/view_4"
+        android:backgroundTint="@color/color1"
+        android:text="9" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/view_10"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/color2"
+        android:layout_above="@id/view_4"
+        android:text="10" />
+    <Button
+        android:id="@+id/view_11"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/color2"
+        android:textAllCaps="false"
+        android:layout_below="@id/view_4"
+        android:text="11" />
+    <Button
+        android:id="@+id/view_12"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_toLeftOf="@id/view_4"
+        android:backgroundTint="@color/color2"
+        android:text="12" />
+    <Button
+        android:id="@+id/view_13"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@id/view_4"
+        android:backgroundTint="@color/color2"
+        android:text="13" />
+    <Button
+        android:id="@+id/view_14"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_above="@id/view_4"
+        android:layout_toRightOf="@id/view_4"
+        android:backgroundTint="@color/color3"
+        android:text="14" />
+    <Button
+        android:id="@+id/view_15"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_above="@id/view_14"
+        android:layout_alignRight="@id/view_4"
+        android:backgroundTint="@color/color3"
+        android:text="15" />
+    <Button
+        android:id="@+id/view_16"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_below="@id/view_4"
+        android:layout_alignLeft="@id/view_4"
+        android:layout_alignRight="@id/view_4"
+        android:backgroundTint="@color/color3"
+        android:text="16" />
+    <Button
+        android:id="@+id/view_17"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/view_15"
+        android:layout_alignBottom="@id/view_4"
+        android:backgroundTint="@color/color3"
+        android:text="17" />
+    <Button
+        android:id="@+id/view_18"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:textAllCaps="false"
+        android:layout_alignTop="@id/view_4"
+        android:layout_alignLeft="@id/view_4"
+        android:backgroundTint="@color/color3"
+        android:text="18"
+        android:elevation="4dp"/>
+</RelativeLayout>

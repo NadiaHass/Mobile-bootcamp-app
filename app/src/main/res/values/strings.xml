@@ -56,13 +56,13 @@
 
         <item>Fragments</item>
 
-        <item>Anim1</item>
+        <item>Animation</item>
 
-        <item>Anim2</item>
+        <item>Drawable 1</item>
 
-        <item>Anim3</item>
+        <item>Drawable 2</item>
 
-        <item>Anim4</item>
+        <item>Omba3d nchof</item>
 
         <item>List View</item>
 
@@ -103,17 +103,29 @@
 
         <item>RelativeLayoutFragment java</item>
 
-        <item>GridLayoutFragment java</item>
 
-        <item>ConstraintLayoutFragment java</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_gridlayout); \n Button btn_0 = findViewById(R.id.btn_0); \n ................. \n} \n</item>
+
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_constraintlayout); \n Button btn_0 = findViewById(R.id.btn_0); \n ................. \n} \n</item>
 
         <item>CoordinateLayoutFragment java</item>
 
-        <item>CardViewFragment java</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_cardview); \n TextView textView = findViewById(R.id.simple_card); \n ................. \n} \n</item>
 
-        <item>ScrollViewFragment java</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \nsetContentView(R.layout.activity_scrollview); \n Button btn_0 = findViewById(R.id.btn_0); \n ................. \n} \n</item>
 
-        <item>RadioGroupFragment java</item>
+        <item>protected void onCreate(Bundle savedInstanceState) { \nsuper.onCreate(savedInstanceState); \n RadioGroup radioGroupHr=findViewById(R.id.rg_hr);
+        RadioButton btn_show=radioGroupHr.findViewById(R.id.btn_show); \n
+        RadioButton btn_hide=radioGroupHr.findViewById(R.id.btn_hide); \n
+        RadioGroup radioGroupVr=findViewById(R.id.rg_vr); \n
+        btn_show.setOnCheckedChangeListener((buttonView, isChecked) -> { \n
+            if(isChecked) \n
+            radioGroupVr.setVisibility(View.VISIBLE); \n
+        });
+        btn_hide.setOnCheckedChangeListener((buttonView, isChecked) -> { \n
+             if(isChecked) \n
+            radioGroupVr.setVisibility(View.INVISIBLE);
+        });\n } \n</item>
 
         <item>IntentFragment java</item>
 
@@ -143,7 +155,63 @@
 
         <item>ListViewFragment java</item>
 
-        <item>RecyclerViewFragment java</item>
+        <item> // MainActivity.java \n \n   ArrayList&lt;String&gt; languages = new ArrayList&lt;&gt;(); \n
+        languages.add(\&quot;Java\&quot;); \n
+        languages.add(\&quot;Kotlin\&quot;); \n
+        languages.add(\&quot;C++\&quot;); \n
+        languages.add(\&quot;Python\&quot;); \n
+        languages.add(\&quot;Ruby\&quot;); \n
+        languages.add(\&quot;C#\&quot;); \n
+        languages.add(\&quot;Php\&quot;); \n
+        languages.add(\&quot;Swift\&quot;); \n
+        languages.add(\&quot;Go\&quot;); \n
+        languages.add(\&quot;Pascal\&quot;); \n
+        languages.add(\&quot;Delphi\&quot;); \n \n
+        RecyclerView recyclerView =  view.findViewById(R.id.rv_languages); \n
+        LanguagesAdapter languagesAdapter = new LanguagesAdapter(languages); \n
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() ,  \n
+RecyclerView.VERTICAL , false)); \n
+        recyclerView.setAdapter(languagesAdapter); \n \n
+
+            // LanguagesAdapter.java \n\n
+            public class LanguagesAdapter extends \n
+RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
+    private ArrayList&lt;String&gt; mLanguageList; \n
+
+    public LanguagesAdapter(ArrayList&lt;String&gt; mLanguageList) { \n
+        this.mLanguageList = mLanguageList; \n
+    }\n \n
+
+
+    @NonNull \n
+    @Override \n
+    public LanguagesAdapter.LanguageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { \n
+        return new LanguagesAdapter.LanguageViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.languages_rv_item , parent , false)); \n
+    } \n \n
+
+    @Override \n
+    public void onBindViewHolder(@NonNull LanguagesAdapter.LanguageViewHolder holder, int position) { \n
+        holder.languageName.setText(mLanguageList.get(position)); \n
+        holder.itemView.setOnClickListener(v -&gt; { \n
+            // put here the code if item is clicked \n
+        }); \n
+    } \n \n
+
+    @Override \n
+    public int getItemCount() { \n
+        return mLanguageList.size(); \n
+    } \n \n
+
+    public static class LanguageViewHolder extends RecyclerView.ViewHolder{ \n
+        public TextView languageName; \n
+        public LanguageViewHolder(@NonNull View itemView) { \n
+            super(itemView); \n
+
+            languageName = itemView.findViewById(R.id.tv_language); \n
+        } \n
+    } \n
+} \n
+</item>
 
         <item>SQLiteFragment java</item>
 
@@ -180,19 +248,460 @@
 
         <item>LinearLayoutFragment xml</item>
 
-        <item>RelativeLayoutFragment xml</item>
+        <item></item>
 
-        <item>GridLayoutFragment xml</item>
+        <item>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; \n
+&lt;GridLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; \n
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot; \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+    tools:context=&quot;.ui.fragments.resultFragments.GridLayoutFragment&quot; \n
+  android:columnCount=&quot;1&quot;&gt; \n
+    &lt;GridLayout \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        android:columnCount=&quot;3&quot; \n
+        android:background=&quot;@color/color4&quot; \n
+        android:layout_rowWeight=&quot;1&quot; \n
+        android:padding=&quot;20dp&quot;
+        &gt; \n
 
-        <item>ConstraintLayoutFragment xml</item>
+        &lt;Button \n
+            android:id=\&quot;@+id/btn_0\&quot; \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_margin=&quot;10dp&quot; \n
+            android:backgroundTint=&quot;@color/color5&quot; \n
+            android:text=&quot;0&quot; /&gt; \n
+
+       &lt;Button .............. /&gt; \n
+       .................. \n
+    &lt;/GridLayout&gt; \n
+
+    &lt;GridLayout \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        android:layout_rowWeight=&quot;1&quot; \n
+ android:background=&quot;@color/color0&quot; \n
+        android:columnCount=&quot;3&quot; \n
+        android:padding=&quot;20dp&quot;&gt; \n
+
+
+        &lt;Button \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_rowWeight=&quot;1&quot; \n
+            android:layout_columnWeight=&quot;1&quot; /&gt; \n
+
+        &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_rowWeight=&quot;1&quot; /&gt; \n
+
+        &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_rowWeight=&quot;1&quot; /&gt; \n
+
+         &lt;Button \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_columnWeight=&quot;1&quot; /&gt; \n
+
+         &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; /&gt; \n
+
+         &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; /&gt; \n
+
+        &lt;Button \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:layout_columnWeight=&quot;1&quot; /&gt; \n
+
+        &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; /&gt; \n
+
+        &lt;Button \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; /&gt; \n
+    &lt;/GridLayout&gt; \n
+
+&lt;/GridLayout&gt; \n</item>
+
+        <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \n xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; \n
+ w
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot; \n
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot; \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+
+    tools:context=&quot;.ui.fragments.resultFragments.ConstraintLayoutFragment&quot;&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_0&quot; \n
+        android:layout_width=&quot;56dp&quot; \n
+        android:layout_height=&quot;40dp&quot; \n
+        android:backgroundTint=&quot;@color/color1&quot; \n
+        android:text=&quot;0&quot; \n
+        app:layout_constraintLeft_toLeftOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_1&quot; \n
+        .................
+        app:layout_constraintLeft_toLeftOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toBottomOf=&quot;@+id/btn_0&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_2&quot; \n
+        ..................
+        app:layout_constraintLeft_toRightOf=&quot;@+id/btn_0&quot; \n
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt; \n
+    &lt;Button \n
+        android:id=&quot;@+id/btn_5&quot; \n
+
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; \n
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
+        app:layout_constraintStart_toStartOf=&quot;parent&quot; \n
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot; \n
+
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_7&quot; \n
+     \n
+        app:layout_constraintBottom_toTopOf=&quot;@+id/btn_5&quot; \n
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot; \n
+        app:layout_constraintStart_toStartOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toTopOf=&quot;@+id/btn_5&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_6&quot; \n
+        app:layout_constraintStart_toStartOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toBottomOf=&quot;@+id/btn_5&quot; \n
+
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_4&quot; \n
+        app:layout_constraintEnd_toStartOf=&quot;@+id/btn_3&quot; \n
+        app:layout_constraintRight_toLeftOf=&quot;@id/btn_3&quot; \n
+        app:layout_constraintStart_toEndOf=&quot;@+id/btn_2&quot; \n
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_3&quot; \n
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; \n
+        /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_10&quot; \n
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
+        app:layout_constraintEnd_toStartOf=&quot;@+id/btn_11&quot; \n
+        app:layout_constraintStart_toStartOf=&quot;parent&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_11&quot; \n
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
+        app:layout_constraintRight_toRightOf=&quot;parent&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_8&quot; \n
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
+        app:layout_constraintLeft_toRightOf=&quot;@id/btn_9&quot; \n
+        app:layout_constraintRight_toRightOf=&quot;parent&quot; \n
+        app:layout_constraintTop_toBottomOf=&quot;@id/btn_5&quot; /&gt; \n
+
+    &lt;Button \n
+        android:id=&quot;@+id/btn_9&quot; \n
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot; \n
+        app:layout_constraintLeft_toLeftOf=&quot;parent&quot; \n
+        app:layout_constraintRight_toLeftOf=&quot;@+id/btn_8&quot; \n
+        app:layout_constraintTop_toBottomOf=&quot;@id/btn_5&quot; /&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</item>
 
         <item>CoordinateLayoutFragment xml</item>
 
-        <item>CardViewFragment xml</item>
+        <item>&lt;androidx.cardview.widget.CardView \n
+        android:layout_width=&quot;wrap_content&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        app:cardBackgroundColor=&quot;@color/color1&quot;
+        &gt; \n
 
-        <item>ScrollViewFragment xml</item>
+        &lt;TextView \n
+             android:id=&quot;@+id/sample_card&quot; \n
+            android:layout_width=&quot;200dp&quot; \n
+            android:layout_height=&quot;100dp&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;Simple example&quot; /&gt; \n
+    &lt;/androidx.cardview.widget.CardView&gt; \n
+    &lt;androidx.cardview.widget.CardView \n
+    android:layout_width=&quot;wrap_content&quot; \n
+    android:layout_height=&quot;wrap_content&quot; \n
+    app:cardCornerRadius=&quot;20dp&quot; \n
+     app:cardBackgroundColor=&quot;@color/color1&quot;
+    &gt; \n
 
-        <item>RadioGroupFragment xml</item>
+        &lt;TextView \n
+            android:layout_width=&quot;200dp&quot; \n
+            android:layout_height=&quot;100dp&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;Card View with radius&quot; /&gt; \n
+&lt;/androidx.cardview.widget.CardView&gt; \n
+    &lt;androidx.cardview.widget.CardView \n
+        android:layout_width=&quot;wrap_content&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        app:cardCornerRadius=&quot;20dp&quot; \n
+        app:cardElevation=&quot;15dp&quot; \n
+        app:cardBackgroundColor=&quot;@color/color1&quot;
+        &gt; \n
+
+        &lt;TextView \n
+            android:layout_width=&quot;200dp&quot; \n
+            android:layout_height=&quot;100dp&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;Card View with radius and elevation&quot; /&gt; \n
+    &lt;/androidx.cardview.widget.CardView&gt; \n
+    &lt;androidx.cardview.widget.CardView \n
+        android:layout_width=&quot;wrap_content&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        app:cardCornerRadius=&quot;20dp&quot; \n
+        app:cardElevation=&quot;15dp&quot; \n
+        app:cardBackgroundColor=&quot;@color/color1&quot; \n
+            android:outlineSpotShadowColor=&quot;@color/color3&quot;&gt; \n
+
+        &lt;TextView \n
+            android:layout_width=&quot;200dp&quot; \n
+            android:layout_height=&quot;100dp&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;Card View elevation shodow changed&quot; \n
+            /&gt; \n
+    &lt;/androidx.cardview.widget.CardView&gt; \n  \n</item>
+
+        <item>&lt;ScrollView \n
+      android:layout_width=&quot;match_parent&quot; \n
+      android:layout_height=&quot;match_parent&quot; \n
+      android:background=&quot;@color/color0&quot;  &gt; \n
+      &lt;LinearLayout \n
+          android:layout_width=&quot;match_parent&quot; \n
+          android:layout_height=&quot;match_parent&quot; \n
+          android:orientation=&quot;vertical&quot; \n
+          android:padding=&quot;10dp&quot;&gt; \n
+
+          &lt;Button \n
+              android:id=&quot;@+id/btn_0&quot; \n
+              android:layout_width=&quot;match_parent&quot; \n
+              android:layout_height=&quot;80dp&quot; \n
+              android:backgroundTint=&quot;@color/color1&quot; \n
+              android:text=&quot;0&quot; /&gt; \n
+
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+      &lt;/LinearLayout&gt; \n
+  &lt;/ScrollView&gt; \n
+
+    &lt;HorizontalScrollView \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;match_parent&quot; \n
+        android:background=&quot;@color/color2&quot;&gt; \n
+
+        &lt;LinearLayout \n
+            android:layout_width=&quot;match_parent&quot; \n
+            android:layout_height=&quot;match_parent&quot; \n
+            android:layout_gravity=&quot;center&quot; \n
+            android:orientation=&quot;horizontal&quot;&gt; \n
+
+            &lt;Button \n
+                android:layout_width=&quot;60dp&quot; \n
+                android:layout_height=&quot;84dp&quot; \n
+                android:layout_margin=&quot;10dp&quot; \n
+                android:backgroundTint=&quot;@color/color3&quot; \n
+                android:text=&quot;0&quot; /&gt; \n
+
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+        &lt;/LinearLayout&gt; \n
+    &lt;/HorizontalScrollView&gt; \n
+&lt;HorizontalScrollView \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+    android:layout_weight=&quot;2&quot; \n
+    android:background=&quot;@color/color4&quot; &gt; \n
+&lt;ScrollView \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+   &gt; \n
+    &lt;GridLayout \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;match_parent&quot; \n
+        android:layout_margin=&quot;10dp&quot; \n
+
+        android:columnCount=&quot;3&quot;&gt; \n
+
+        &lt;TextView \n
+            android:layout_width=&quot;150dp&quot; \n
+            android:layout_height=&quot;150dp&quot; \n
+            android:layout_margin=&quot;10dp&quot; \n
+            android:background=&quot;@color/color5&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;0&quot; /&gt; \n
+
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+
+
+    &lt;/GridLayout&gt; \n
+&lt;/ScrollView&gt; \n
+&lt;/HorizontalScrollView&gt; \n
+</item>
+
+        <item>&lt;ScrollView \n
+      android:layout_width=&quot;match_parent&quot; \n
+      android:layout_height=&quot;match_parent&quot; \n
+      android:background=&quot;@color/color0&quot;  &gt; \n
+      &lt;LinearLayout \n
+          android:layout_width=&quot;match_parent&quot; \n
+          android:layout_height=&quot;match_parent&quot; \n
+          android:orientation=&quot;vertical&quot; \n
+          android:padding=&quot;10dp&quot;&gt; \n
+
+          &lt;Button \n
+              android:id=&quot;@+id/btn_0&quot; \n
+              android:layout_width=&quot;match_parent&quot; \n
+              android:layout_height=&quot;80dp&quot; \n
+              android:backgroundTint=&quot;@color/color1&quot; \n
+              android:text=&quot;0&quot; /&gt; \n
+
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+          &lt;Button ............./&gt; \n
+      &lt;/LinearLayout&gt; \n
+  &lt;/ScrollView&gt; \n
+
+    &lt;HorizontalScrollView \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;match_parent&quot; \n
+        android:background=&quot;@color/color2&quot;&gt; \n
+
+        &lt;LinearLayout \n
+            android:layout_width=&quot;match_parent&quot; \n
+            android:layout_height=&quot;match_parent&quot; \n
+            android:layout_gravity=&quot;center&quot; \n
+            android:orientation=&quot;horizontal&quot;&gt; \n
+
+            &lt;Button \n
+                android:layout_width=&quot;60dp&quot; \n
+                android:layout_height=&quot;84dp&quot; \n
+                android:layout_margin=&quot;10dp&quot; \n
+                android:backgroundTint=&quot;@color/color3&quot; \n
+                android:text=&quot;0&quot; /&gt; \n
+
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+             &lt;Button ............./&gt; \n
+        &lt;/LinearLayout&gt; \n
+    &lt;/HorizontalScrollView&gt; \n
+&lt;HorizontalScrollView \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+    android:layout_weight=&quot;2&quot; \n
+    android:background=&quot;@color/color4&quot; &gt; \n
+&lt;ScrollView \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+   &gt; \n
+    &lt;GridLayout \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;match_parent&quot; \n
+        android:layout_margin=&quot;10dp&quot; \n
+
+        android:columnCount=&quot;3&quot;&gt; \n
+
+        &lt;TextView \n
+            android:layout_width=&quot;150dp&quot; \n
+            android:layout_height=&quot;150dp&quot; \n
+            android:layout_margin=&quot;10dp&quot; \n
+            android:background=&quot;@color/color5&quot; \n
+            android:gravity=&quot;center&quot; \n
+            android:text=&quot;0&quot; /&gt; \n
+
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+        &lt;TextView ............./&gt; \n
+
+
+    &lt;/GridLayout&gt; \n
+&lt;/ScrollView&gt; \n
+&lt;/HorizontalScrollView&gt; \n
+        </item>
+        <item>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; \n
+&lt;LinearLayout \n
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; \n
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot; \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;match_parent&quot; \n
+    android:orientation=&quot;vertical&quot; \n
+    android:padding=&quot;10dp&quot; \n
+    tools:context=&quot;.ui.fragments.resultFragments.RadioGroupFragment&quot;&gt; \n
+
+    &lt;RadioGroup \n
+        android:id=&quot;@+id/rg_hr&quot; \n
+        android:layout_width=&quot;match_parent&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        android:gravity=&quot;center&quot; \n
+        android:orientation=&quot;horizontal&quot;&gt; \n
+
+&lt;TextView \n
+    android:layout_width=&quot;wrap_content&quot; \n
+    android:layout_height=&quot;wrap_content&quot; \n
+    android:text=&quot;Horizantal Radio Group&quot; \n
+    android:textStyle=&quot;bold&quot; /&gt; \n
+    &lt;RadioButton \n
+        android:id=&quot;@+id/type_1&quot; \n
+        android:layout_width=&quot;wrap_content&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        android:layout_margin=&quot;15dp&quot; \n
+        android:text=&quot;Type 1&quot;/&gt; \n
+        &lt;RadioButton ............... /&gt; \n
+    &lt;/RadioGroup&gt;
+    &lt;RadioGroup \n
+        android:id=&quot;@+id/rg_vr&quot; \n
+    android:layout_width=&quot;match_parent&quot; \n
+    android:layout_height=&quot;wrap_content&quot;&gt; \n
+
+        &lt;TextView \n
+            android:layout_width=&quot;wrap_content&quot; \n
+            android:layout_height=&quot;wrap_content&quot; \n
+            android:text=&quot;Vertical Radio Group&quot; \n
+            android:textStyle=&quot;bold&quot; \n
+            android:textSize=&quot;16sp&quot;/&gt; \n
+    &lt;RadioButton \n
+        android:id=&quot;@+id/rb_1&quot; \n
+        android:layout_width=&quot;wrap_content&quot; \n
+        android:layout_height=&quot;wrap_content&quot; \n
+        android:text=&quot;Type 1&quot;/&gt; \n
+    &lt;RadioButton ............... /&gt; \n
+    &lt;RadioButton ............... /&gt; \n
+    &lt;RadioButton ............... /&gt; \n
+
+&lt;/RadioGroup&gt; \n
+&lt;/LinearLayout&gt; \n   </item>
 
         <item>IntentFragment xml</item>
 
@@ -201,12 +710,6 @@
         <item>IntentUrlFragment xml</item>
 
         <item>IntentEmailFragment xml</item>
-
-        <item>OptionMenuFragment xml</item>
-
-        <item>PopupMenuFragment xml</item>
-
-        <item>ContextMenuFragment xml</item>
 
         <item>OptionMenuFragment xml</item>
 
@@ -228,7 +731,48 @@
 
         <item>ListViewFragment xml</item>
 
-        <item>RecyclerViewFragment xml</item>
+        <item>
+            //activity_main.xml \n \n
+            &lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n
+    &lt;androidx.recyclerview.widget.RecyclerView \n
+        android:id=\&quot;@+id/rv_languages\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;match_parent\&quot; /&gt; \n
+
+&lt;/FrameLayout&gt; \n \n
+            // languages_rv_item.xml \n \n
+&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot;&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_language\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:padding=\&quot;8dp\&quot; \n \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n
+
+    &lt;View \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;1dp\&quot; \n
+        android:background=\&quot;@color/black\&quot; \n
+        android:layout_marginTop=\&quot;16dp\&quot; \n
+        app:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n
+        </item>
 
         <item>SQLiteFragment xml</item>
 
@@ -295,11 +839,11 @@
 
         <item>FragmentsFragment</item>
 
-        <item>Anim1Fragment</item>
+        <item>AnimFragment</item>
 
-        <item>Anim2Fragment</item>
+        <item>DrawFragment</item>
 
-        <item>Anim3Fragment</item>
+        <item>CompDrawFragment</item>
 
         <item>Anim4Fragment</item>
 
