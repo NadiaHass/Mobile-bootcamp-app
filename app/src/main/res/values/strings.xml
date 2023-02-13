@@ -10,33 +10,33 @@
 
         <item>EditText</item>
 
-        <item>CheckBox</item>
+        <item>Check Box</item>
 
-        <item>RadioButton</item>
+        <item>Radio Button</item>
 
         <item>Switch</item>
 
-        <item>ProgressBar</item>
+        <item>Progress Bar</item>
 
         <item>Date Picker</item>
 
-        <item>FrameLayout</item>
+        <item>Frame Layout</item>
 
-        <item>LinearLayout</item>
+        <item>Linear Layout</item>
 
-        <item>RelativeLayout</item>
+        <item>Relative Layout</item>
 
-        <item>GridLayout</item>
+        <item>Grid Layout</item>
 
-        <item>ConstraintLayout</item>
+        <item>Constraint Layout</item>
 
-        <item>CoordinateLayout</item>
+        <item>Coordinate Layout</item>
 
         <item>CardView</item>
 
-        <item>ScrollView</item>
+        <item>Scroll View</item>
 
-        <item>RadioGroup</item>
+        <item>Radio Group</item>
 
         <item>Simple intent</item>
 
