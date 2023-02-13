@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.adapters.ModuleAdapter;
 import com.example.mobilebootcamp.databinding.ActivityModulesBinding;
 import com.example.mobilebootcamp.models.Module;
@@ -24,17 +22,35 @@ public class ModulesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        ArrayList<Module> modules = getModules();
+
+        setupRecyclerView(modules);
+
+    }
+
+
+    private void setupRecyclerView(ArrayList<Module> modules) {
+        ModuleAdapter moduleAdapter = new ModuleAdapter(modules , this);
+        binding.rvModules.setLayoutManager(new LinearLayoutManager(this , RecyclerView.VERTICAL , false));
+        binding.rvModules.setAdapter(moduleAdapter);
+
+    }
+
+    private ArrayList<Module> getModules() {
         ArrayList<Module> modules = new ArrayList<>();
         modules.add(new Module("Widgets" , 0 , 9 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Layouts" , 9 , 15 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Containers" , 15 , 18 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Intent" , 18 , 22 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Menu" , 22 , 26 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-
-        ModuleAdapter moduleAdapter = new ModuleAdapter(modules , this);
-        binding.rvModules.setLayoutManager(new LinearLayoutManager(this , RecyclerView.VERTICAL , false));
-        binding.rvModules.setAdapter(moduleAdapter);
-
+        modules.add(new Module("Menu & dialogs" , 22 , 26 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Fragments" , 26 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Styles & animation" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Dynamic views" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("SQLite" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Architecture components" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Room database" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Firebase" , 27 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        return modules;
     }
 
 }

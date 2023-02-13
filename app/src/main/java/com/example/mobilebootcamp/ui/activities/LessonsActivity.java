@@ -1,12 +1,10 @@
 package com.example.mobilebootcamp.ui.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.adapters.LessonsAdapter;
@@ -21,6 +19,9 @@ public class LessonsActivity extends AppCompatActivity {
     String[] lessonsNameList;
     String[] resultFragmentName;
     private ActivityLessonsBinding binding;
+    int start;
+    int end;
+    String moduleName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +29,20 @@ public class LessonsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        int start = getIntent().getIntExtra("start" , 0);
-        int end = getIntent().getIntExtra("end" , 0);
-        String moduleName = getIntent().getStringExtra("name");
+        getDataFromIntent();
+
         binding.tvModuleName.setText(moduleName);
+
         getListsFromStringArray();
 
         setupRecyclerView(start , end);
+    }
+
+
+    private void getDataFromIntent() {
+        start = getIntent().getIntExtra("start" , 0);
+        end = getIntent().getIntExtra("end" , 0);
+        moduleName = getIntent().getStringExtra("name");
     }
 
     private void setupRecyclerView(int start, int end) {

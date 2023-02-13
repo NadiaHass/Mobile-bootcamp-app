@@ -54,6 +54,8 @@
 
         <item>Alert Dialog</item>
 
+        <item>Fragments</item>
+
 
     </string-array>
 
@@ -110,6 +112,7 @@
 
         <item>AlertDialogFragment java</item>
 
+        <item>FragmentsFragment java</item>
 
     </string-array>
 
@@ -173,6 +176,7 @@
 
         <item>AlertDialogFragment xml</item>
 
+        <item>FragmentsFragment xml</item>
 
 
     </string-array>
@@ -225,10 +229,12 @@
         <item>OptionMenuFragment</item>
 
         <item>PopupMenuFragment</item>
-        
+
         <item>ContextMenuFragment</item>
 
         <item>AlertDialogFragment</item>
+
+        <item>FragmentsFragment</item>
 
     </string-array>
 

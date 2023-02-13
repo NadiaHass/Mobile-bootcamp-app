@@ -27,36 +27,32 @@ public class LessonActivity extends AppCompatActivity {
 
         Lesson lesson = (Lesson) getIntent().getSerializableExtra("lesson");
 
-        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = new Fragment();
-                Bundle args = new Bundle();
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = new Fragment();
+            Bundle args = new Bundle();
 
-                switch (item.getItemId()){
-                    case R.id.java:
-                        selectedFragment = new JavaCodeFragment();
-                        args.putString("lesson" ,lesson.getJavaCode());
-                        break;
-
-                    case R.id.xml:
-                        selectedFragment = new XmlCodeFragment();
-                        args.putString("lesson" , lesson.getXmlCode());
-                        break;
-
-                    case R.id.result: {
-                        try {
-                            selectedFragment = (Fragment) (Class.forName("com.example.mobilebootcamp.ui.fragments.resultFragments." + lesson.getResultFragmentName()).newInstance());
-                        } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
+            switch (item.getItemId()){
+                case R.id.java:
+                    selectedFragment = new JavaCodeFragment();
+                    args.putString("lesson" ,lesson.getJavaCode());
                     break;
+
+                case R.id.xml:
+                    selectedFragment = new XmlCodeFragment();
+                    args.putString("lesson" , lesson.getXmlCode());
+                    break;
+
+                case R.id.result: {
+                    try {
+                        selectedFragment = (Fragment) (Class.forName("com.example.mobilebootcamp.ui.fragments.resultFragments." + lesson.getResultFragmentName()).newInstance());
+                    } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
-                openSelectedFragment(selectedFragment , args);
-                return true;
+                break;
             }
+            openSelectedFragment(selectedFragment , args);
+            return true;
         });
 
         if (savedInstanceState == null) {
