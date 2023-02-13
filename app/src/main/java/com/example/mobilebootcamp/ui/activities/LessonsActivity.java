@@ -31,6 +31,7 @@ public class LessonsActivity extends AppCompatActivity {
         int start = getIntent().getIntExtra("start" , 0);
         int end = getIntent().getIntExtra("end" , 0);
         String moduleName = getIntent().getStringExtra("name");
+        binding.tvModuleName.setText(moduleName);
         getListsFromStringArray();
 
         setupRecyclerView(start , end);
