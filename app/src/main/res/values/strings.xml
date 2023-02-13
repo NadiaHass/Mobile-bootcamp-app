@@ -20,6 +20,25 @@
 
         <item>Date Picker</item>
 
+        <item>FrameLayout</item>
+
+        <item>LinearLayout</item>
+
+        <item>RelativeLayout</item>
+
+        <item>GridLayout</item>
+
+        <item>ConstraintLayout</item>
+
+        <item>CoordinateLayout</item>
+
+        <item>CardView</item>
+
+        <item>ScrollView</item>
+
+        <item>RadioGroup</item>
+
+
     </string-array>
 
     <string-array name="java_code">
@@ -40,8 +59,27 @@
         <item>ProgressBar progressBar = findViewById(R.id.progressBar);</item>
 
         <item>DatePicker datePicker = findViewById(R.id.datePicker); \n TextView textView = findViewById(R.id.tv_date); \n Button getDateButton = findViewById(R.id.btn_get_date); \n \n// set the initial date of the DatePicker \nCalendar calendar = Calendar.getInstance(); \ndatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), null); \ngetDateButton.setOnClickListener(v -&gt; { \nint year = datePicker.getYear(); \nint month = datePicker.getMonth(); \nint day = datePicker.getDayOfMonth(); \n \ntextView.setText(year + \&quot; / \&quot; + month + \&quot; / \&quot; + day); \n});</item>
-    </string-array>
 
+        <item>FrameLayoutFragment java</item>
+
+        <item>LinearLayoutFragment java</item>
+
+        <item>RelativeLayoutFragment java</item>
+
+        <item>GridLayoutFragment java</item>
+
+        <item>ConstraintLayoutFragment java</item>
+
+        <item>CoordinateLayoutFragment java</item>
+
+        <item>CardViewFragment java</item>
+
+        <item>ScrollViewFragment java</item>
+
+        <item>RadioGroupFragment java</item>
+
+
+    </string-array>
 
 
     <string-array name="xml_code">
@@ -62,6 +100,24 @@
         <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
 
         <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.DatePickerFragment\&quot;&gt; \n \n\&lt;DatePicker \nandroid:id=\&quot;@+id/datePicker\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_get_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Show date\&quot; /&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
+
+        <item>FrameLayoutFragment xml</item>
+
+        <item>LinearLayoutFragment xml</item>
+
+        <item>RelativeLayoutFragment xml</item>
+
+        <item>GridLayoutFragment xml</item>
+
+        <item>ConstraintLayoutFragment xml</item>
+
+        <item>CoordinateLayoutFragment xml</item>
+
+        <item>CardViewFragment xml</item>
+
+        <item>ScrollViewFragment xml</item>
+
+        <item>RadioGroupFragment xml</item>
 
 
     </string-array>
@@ -84,6 +140,25 @@
         <item>ProgressBarFragment</item>
 
         <item>DatePickerFragment</item>
+
+        <item>FrameLayoutFragment</item>
+
+        <item>LinearLayoutFragment</item>
+
+        <item>RelativeLayoutFragment</item>
+
+        <item>GridLayoutFragment</item>
+        
+        <item>ConstraintLayoutFragment</item>
+
+        <item>CoordinateLayoutFragment</item>
+
+        <item>CardViewFragment</item>
+
+        <item>ScrollViewFragment</item>
+
+        <item>RadioGroupFragment</item>
+
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
