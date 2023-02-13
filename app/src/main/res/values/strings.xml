@@ -38,6 +38,22 @@
 
         <item>RadioGroup</item>
 
+        <item>Simple intent</item>
+
+        <item>Pass data</item>
+
+        <item>Open url</item>
+
+        <item>Send email</item>
+
+        <item>Option Menu</item>
+
+        <item>Popup Menu</item>
+
+        <item>Context Menu</item>
+
+        <item>Alert Dialog</item>
+
 
     </string-array>
 
@@ -77,6 +93,22 @@
         <item>ScrollViewFragment java</item>
 
         <item>RadioGroupFragment java</item>
+
+        <item>IntentFragment java</item>
+
+        <item>IntentPassDataFragment java</item>
+
+        <item>IntentUrlFragment java</item>
+
+        <item>IntentEmailFragment java</item>
+
+        <item>OptionMenuFragment java</item>
+
+        <item>PopupMenuFragment java</item>
+
+        <item>ContextMenuFragment java</item>
+
+        <item>AlertDialogFragment java</item>
 
 
     </string-array>
@@ -119,6 +151,29 @@
 
         <item>RadioGroupFragment xml</item>
 
+        <item>IntentFragment xml</item>
+
+        <item>IntentPassDataFragment xml</item>
+
+        <item>IntentUrlFragment xml</item>
+
+        <item>IntentEmailFragment xml</item>
+
+        <item>OptionMenuFragment xml</item>
+
+        <item>PopupMenuFragment xml</item>
+
+        <item>ContextMenuFragment xml</item>
+
+        <item>OptionMenuFragment xml</item>
+
+        <item>PopupMenuFragment xml</item>
+
+        <item>ContextMenuFragment xml</item>
+
+        <item>AlertDialogFragment xml</item>
+
+
 
     </string-array>
 
@@ -148,7 +203,7 @@
         <item>RelativeLayoutFragment</item>
 
         <item>GridLayoutFragment</item>
-        
+
         <item>ConstraintLayoutFragment</item>
 
         <item>CoordinateLayoutFragment</item>
@@ -158,6 +213,22 @@
         <item>ScrollViewFragment</item>
 
         <item>RadioGroupFragment</item>
+
+        <item>IntentFragment</item>
+
+        <item>IntentPassDataFragment</item>
+
+        <item>IntentUrlFragment</item>
+
+        <item>IntentEmailFragment</item>
+
+        <item>OptionMenuFragment</item>
+
+        <item>PopupMenuFragment</item>
+        
+        <item>ContextMenuFragment</item>
+
+        <item>AlertDialogFragment</item>
 
     </string-array>
 

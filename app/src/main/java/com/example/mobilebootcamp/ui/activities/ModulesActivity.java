@@ -31,8 +31,12 @@ public class ModulesActivity extends AppCompatActivity {
 
         });
 
-        binding.btnMenus.setOnClickListener(v -> {
+        binding.btnIntent.setOnClickListener(v -> {
+            openLessonsActivity(17 , 21 );
+        });
 
+        binding.btnMenus.setOnClickListener(v -> {
+            openLessonsActivity(21 , 25);
         });
 
     }
