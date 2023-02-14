@@ -66,7 +66,7 @@
 
         <item>List View</item>
 
-        <item>Recycler View</item>
+        <item>RecyclerView</item>
 
         <item>SQLite</item>
 
@@ -131,7 +131,20 @@
 
         <item>AlertDialogFragment java</item>
 
-        <item>FragmentsFragment java</item>
+        <item>        Button button1 = findViewById(R.id.btn_fragment1); \n
+        Button button2 = findViewById(R.id.btn_fragment2); \n \n
+
+        button1.setOnClickListener(v -&gt; { \n
+            Fragment fragment1 = new Fragment1(); \n \n
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit(); \n \n
+
+        }); \n
+
+        button2.setOnClickListener(v -&gt; {
+            Fragment fragment2 = new Fragment2();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
+
+        });</item>
 
         <item>Anim1Fragment java</item>
 
@@ -141,7 +154,15 @@
 
         <item>Anim4Fragment java</item>
 
-        <item>ListViewFragment java</item>
+        <item>          String[] languages = {\&quot;Java\&quot; , \&quot;Kotlin\&quot; , \&quot;C++\&quot; , \&quot;Python\&quot; , \&quot;Ruby\&quot; , \&quot;C#\&quot; , \n
+        \&quot;Php\&quot; , \&quot;Swift\&quot; , \&quot;Go\&quot; , \&quot;Pascal\&quot; , \&quot;Delphi\&quot; , \&quot;Html\&quot; , \&quot;Css\&quot; , \&quot;Sql\&quot; , \&quot;Matlab\&quot;}; \n \n
+
+        ListView listView = findViewById(R.id.list); \n
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(
+               this, \n \n
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, languages
+                ); \n
+        listView.setAdapter(adapter); \n</item>
 
         <item> // MainActivity.java \n \n   ArrayList&lt;String&gt; languages = new ArrayList&lt;&gt;(); \n
         languages.add(\&quot;Java\&quot;); \n
@@ -155,7 +176,7 @@
         languages.add(\&quot;Go\&quot;); \n
         languages.add(\&quot;Pascal\&quot;); \n
         languages.add(\&quot;Delphi\&quot;); \n \n
-        RecyclerView recyclerView =  view.findViewById(R.id.rv_languages); \n
+        RecyclerView recyclerView =  findViewById(R.id.rv_languages); \n
         LanguagesAdapter languagesAdapter = new LanguagesAdapter(languages); \n
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() ,  \n
 RecyclerView.VERTICAL , false)); \n
@@ -203,7 +224,36 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
 
         <item>SQLiteFragment java</item>
 
-        <item>LifeCycleFragment java</item>
+        <item>\@Override \n
+    public void onStart() { \n
+        super.onStart(); \n
+        Toast.makeText(requireContext() , \&quot;onStart called\&quot; , Toast.LENGTH_SHORT).show(); \n
+    } \n \n
+
+    @Override \n
+    public void onResume() { \n
+        super.onResume(); \n
+        Toast.makeText(requireContext() , \&quot;onResume called\&quot; , Toast.LENGTH_SHORT).show(); \n
+    } \n \n
+
+    @Override \n
+    public void onPause() { \n
+        super.onPause(); \n
+        Toast.makeText(requireContext() , \&quot;onPause called\&quot; , Toast.LENGTH_SHORT).show(); \n
+
+    } \n \n
+
+    @Override \n
+    public void onStop() { \n
+        super.onStop(); \n
+        Toast.makeText(requireContext() , \&quot;onStop called\&quot; , Toast.LENGTH_SHORT).show(); \n
+    } \n \n
+
+    @Override \n
+    public void onDestroy() { \n
+        super.onDestroy(); \n
+        Toast.makeText(requireContext() , \&quot;onDestroy called\&quot; , Toast.LENGTH_SHORT).show(); \n
+    } \n</item>
 
         <item>ViewModelFragment java</item>
 
@@ -266,7 +316,7 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
 
         <item>AlertDialogFragment xml</item>
 
-        <item>FragmentsFragment xml</item>
+        <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \nxmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.FragmentsFragment\&quot;&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment1\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \nandroid:text=\&quot;Fragment 1\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment2\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:text=\&quot;Fragment 2\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment1\&quot;  \n/&gt; \n \n&lt;androidx.fragment.app.FragmentContainerView \nandroid:id=\&quot;@+id/container\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;0dp\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment2\&quot;  \n/&gt; \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
         <item>Anim1Fragment xml</item>
 
@@ -276,54 +326,13 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
 
         <item>Anim4Fragment xml</item>
 
-        <item>ListViewFragment xml</item>
+        <item>&lt;FrameLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\n&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \tools:context=\&quot;.ui.fragments.resultFragments.ListViewFragment\&quot;&gt; \n \n&lt;ListView \nandroid:id=\&quot;@+id/list\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot;/&gt; \n \n&lt;/FrameLayout&gt; \n</item>
 
-        <item>
-            //activity_main.xml \n \n
-            &lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
-    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
-    android:layout_width=\&quot;match_parent\&quot; \n
-    android:layout_height=\&quot;match_parent\&quot; \n
-    tools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n
-    &lt;androidx.recyclerview.widget.RecyclerView \n
-        android:id=\&quot;@+id/rv_languages\&quot; \n
-        android:layout_width=\&quot;match_parent\&quot; \n
-        android:layout_height=\&quot;match_parent\&quot; /&gt; \n
-
-&lt;/FrameLayout&gt; \n \n
-            // languages_rv_item.xml \n \n
-&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
-    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
-    android:layout_width=\&quot;match_parent\&quot; \n
-    android:layout_height=\&quot;wrap_content\&quot;&gt; \n \n
-
-    &lt;TextView \n
-        android:id=\&quot;@+id/tv_language\&quot; \n
-        android:layout_width=\&quot;wrap_content\&quot; \n
-        android:layout_height=\&quot;wrap_content\&quot; \n
-        android:textSize=\&quot;24sp\&quot; \n
-        android:textColor=\&quot;@color/black\&quot; \n
-        android:padding=\&quot;8dp\&quot; \n \n
-        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
-        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
-        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
-        app:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n
-
-    &lt;View \n
-        android:layout_width=\&quot;match_parent\&quot; \n
-        android:layout_height=\&quot;1dp\&quot; \n
-        android:background=\&quot;@color/black\&quot; \n
-        android:layout_marginTop=\&quot;16dp\&quot; \n
-        app:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \n
-        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
-        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n
-
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n
-        </item>
+        <item>//activity_main.xml \n \n&lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n&lt;androidx.recyclerview.widget.RecyclerView \nandroid:id=\&quot;@+id/rv_languages\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; /&gt; \n&lt;/FrameLayout&gt; \n \n// languages_rv_item.xml \n \n&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:padding=\&quot;8dp\&quot; \n \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n&lt;View \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;1dp\&quot; \nandroid:background=\&quot;@color/black\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
         <item>SQLiteFragment xml</item>
 
-        <item>LifeCycleFragment xml</item>
+        <item> &lt;FrameLayout  \nxmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.LifeCycleFragment\&quot;&gt; \n \n </item>
 
         <item>ViewModelFragment xml</item>
 
