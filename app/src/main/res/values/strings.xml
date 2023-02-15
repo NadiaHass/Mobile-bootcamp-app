@@ -222,7 +222,191 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
 } \n
 </item>
 
-        <item>SQLiteFragment java</item>
+        <item>//Model class \n \n public class Note { \n
+    private int id; \n
+    private String content; \n \n
+
+    public Note(int id, String content) { \n
+        this.id = id; \n
+        this.content = content; \n
+    } \n \n
+
+    public int getId() { \n
+        return id; \n
+    } \n \n
+
+    public void setId(int id) { \n
+        this.id = id; \n
+    } \n \n
+
+    public String getContent() { \n
+        return content; \n
+    } \n \n
+
+    public void setContent(String content) { \n
+        this.content = content; \n
+    } \n
+} \n \n
+        // NoteDatabaseHelper \n \n
+            public class NoteDatabaseHelper extends SQLiteOpenHelper { \n
+    private static final int DATABASE_VERSION = 1; \n
+    private static final String DATABASE_NAME = \&quot;notes.db\&quot;; \n
+    private static final String TABLE_NAME = \&quot;notes\&quot;; \n
+    private static final String COLUMN_ID = \&quot;id\&quot;; \n
+    private static final String COLUMN_CONTENT = \&quot;content\&quot;; \n \n
+
+    public NoteDatabaseHelper(Context context) { \n
+        super(context, DATABASE_NAME, null, DATABASE_VERSION); \n
+    } \n \n
+
+    /@Override \n
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { \n
+        db.execSQL(\&quot;DROP TABLE IF EXISTS \&quot; + TABLE_NAME); \n
+        onCreate(db); \n
+    } \n \n
+
+
+    \@Override
+    public void onCreate(SQLiteDatabase db) { \n
+        String createTableQuery = \&quot;CREATE TABLE \&quot; + TABLE_NAME + \&quot;(\&quot; \n
+                + COLUMN_ID + \&quot; INTEGER PRIMARY KEY AUTOINCREMENT, \&quot; \n
+                + COLUMN_CONTENT + \&quot; TEXT)\&quot;; \n
+        db.execSQL(createTableQuery); \n
+
+    } \n \n
+    public void deleteNoteById(int id){ \n
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase(); \n
+        sqLiteDatabase.delete(TABLE_NAME , \&quot;id = ?\&quot; , new String[] {String.valueOf(id)}); \n
+        sqLiteDatabase.close(); \n
+    } \n \n
+    public void addNote(Note note) { \n
+        SQLiteDatabase db = this.getWritableDatabase(); \n
+        ContentValues values = new ContentValues(); \n
+        values.put(COLUMN_CONTENT, note.getContent()); \n
+        db.insert(TABLE_NAME, null, values); \n
+        db.close(); \n
+    } \n \n
+
+    public ArrayList&lt;Note&gt; getAllNotes(){ \n
+        ArrayList&lt;Note&gt; employeeList = new ArrayList&lt; &gt;(); \n
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase(); \n
+
+        Cursor cursor = sqLiteDatabase.rawQuery(\&quot;SELECT * FROM \&quot; + TABLE_NAME , null ); \n
+        if (cursor.moveToFirst()){ \n
+            do{ \n
+                employeeList.add(new Note(cursor.getInt(0) , cursor.getString(1) )); \n
+            } while (cursor.moveToNext()); \n
+        } \n
+        cursor.close(); \n
+        sqLiteDatabase.close(); \n
+        return employeeList; \n
+    } \n \n
+
+}\n \n
+            // MainActivity.java \n
+            // global declaration
+                RecyclerView recyclerView; \n
+                NoteDatabaseHelper dbHelper; \n
+            .\n
+            .\n
+            .\n
+            // inside oncreate() \n
+                    FloatingActionButton fab = view.findViewById(R.id.floatingActionButton); \n
+        recyclerView = view.findViewById(R.id.rv_notes); \n
+
+        dbHelper = new NoteDatabaseHelper(requireActivity()); \n
+
+        displayData(); \n \n
+
+        fab.setOnClickListener(v -> { \n
+            showDialog(); \n
+        }); \n \n
+
+            // functions \n
+                private void showDialog() { \n
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity()); \n
+        View dialogView = getLayoutInflater().inflate(R.layout.add_note_dialog, null); \n
+        builder.setView(dialogView); \n
+        EditText noteEditText = dialogView.findViewById(R.id.et_note); \n \n
+
+
+        builder.setPositiveButton(\&quot;Add\&quot;, (dialog, which) -> { \n \n
+
+            String noteContent = noteEditText.getText().toString().trim(); \n
+            if (!noteContent.isEmpty()) { \n
+                addNote(noteContent); \n \n
+
+                displayData(); \n \n
+
+            } \n
+        }); \n \n
+
+        builder.setNegativeButton(\&quot;Cancel\&quot;, (dialog, which) -> { \n
+            dialog.dismiss(); \n
+        }); \n
+        builder.show(); \n
+    } \n \n
+
+    private void addNote(String noteContent) { \n
+        Note note = new Note(0 , noteContent); \n
+        dbHelper.addNote(note); \n
+    } \n \n
+
+    private void displayData() { \n
+        ArrayList&lt;Note&gt; notes = dbHelper.getAllNotes(); \n
+        NotesAdapter notesAdapter = new NotesAdapter(notes , dbHelper); \n
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() , RecyclerView.VERTICAL , false)); \n
+        recyclerView.setAdapter(notesAdapter); \n
+    } \n \n
+
+            // NotesAdapter \n\n
+            public class NotesAdapter extends RecyclerView.Adapter&lt;NotesAdapter.NotesViewHolder&gt; { \n
+    private ArrayList&lt;Note&gt; notes; \n
+    private NoteDatabaseHelper dbHelper; \n
+
+    public NotesAdapter(ArrayList&lt;Note&gt; notes, NoteDatabaseHelper dbHelper) { \n
+        this.notes = notes; \n
+        this.dbHelper = dbHelper; \n
+    } \n \n
+
+
+    \@NonNull \n
+    \@Override \n
+    public NotesAdapter.NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { \n
+        return new NotesAdapter.NotesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.note_rv_item , parent , false)); \n
+    } \n \n
+
+    \@Override \n
+    public void onBindViewHolder(@NonNull NotesAdapter.NotesViewHolder holder, int position) { \n
+        holder.noteContent.setText(notes.get(position).getContent()); \n \n
+
+        holder.deleteImageView.setOnClickListener(v -> { \n
+            dbHelper.deleteNoteById(notes.get(position).getId()); \n
+        }); \n\n
+
+        holder.itemView.setOnClickListener(v -> { \n
+            // put here the code if item is clicked \n
+        }); \n
+    } \n \n
+
+    \@Override \n
+    public int getItemCount() { \n
+        return notes.size(); \n
+    } \n \n
+
+    public static class NotesViewHolder extends RecyclerView.ViewHolder{ \n
+        public TextView noteContent; \n
+        public ImageView deleteImageView; \n
+        public NotesViewHolder(@NonNull View itemView) { \n
+            super(itemView); \n \n
+
+            noteContent = itemView.findViewById(R.id.tv_note_content); \n
+            deleteImageView = itemView.findViewById(R.id.iv_delete); \n
+        } \n
+    } \n
+}\n
+        </item>
 
         <item>\@Override \n
     public void onStart() { \n
@@ -255,7 +439,23 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
         Toast.makeText(requireContext() , \&quot;onDestroy called\&quot; , Toast.LENGTH_SHORT).show(); \n
     } \n</item>
 
-        <item>ViewModelFragment java</item>
+        <item>ViewModelActivity.java \n \n
+public class ScoreFragmentViewModel extends ViewModel { \n
+    public int score = 0; \n
+} \n \n
+//MainActivity.java \n \n
+        ScoreFragmentViewModel scoreViewModel = new  \n ViewModelProvider(requireActivity()).get(ScoreFragmentViewModel.class); \n \n
+
+        Button incrementButton = view.findViewById(R.id.btn_increment); \n
+
+        TextView scoreTextView = view.findViewById(R.id.tv_score); \n
+
+        scoreTextView.setText(String.valueOf(scoreViewModel.score)); \n
+
+        incrementButton.setOnClickListener(v -> { \n
+            scoreViewModel.score ++; \n
+            scoreTextView.setText(String.valueOf(scoreViewModel.score)); \n
+        });\n</item>
 
         <item>RoomDbFragment java</item>
 
@@ -330,11 +530,161 @@ RecyclerView.Adapter&lt;LanguagesAdapter.LanguageViewHolder&gt; { \n
 
         <item>//activity_main.xml \n \n&lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n&lt;androidx.recyclerview.widget.RecyclerView \nandroid:id=\&quot;@+id/rv_languages\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; /&gt; \n&lt;/FrameLayout&gt; \n \n// languages_rv_item.xml \n \n&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:padding=\&quot;8dp\&quot; \n \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n&lt;View \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;1dp\&quot; \nandroid:background=\&quot;@color/black\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
-        <item>SQLiteFragment xml</item>
+        <item>// activity_main.xml \n \n
+&lt;androidx.constraintlayout.widget.ConstraintLayout \n
+xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:id=\&quot;@+id/frameLayout\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n \n
+    tools:context=\&quot;.ui.fragments.resultFragments.SQLiteFragment\&quot;&gt; \n
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_my_notes\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;36dp\&quot; \n
+        android:text=\&quot;My notes \&quot; \n
+        android:fontFamily=\&quot;@font/poppins\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textStyle=\&quot;bold\&quot; \n
+        android:layout_marginStart=\&quot;20dp\&quot; \n
+        android:layout_marginTop=\&quot;20dp\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n
+
+    &lt;com.google.android.material.floatingactionbutton.FloatingActionButton \n
+        android:id=\&quot;@+id/floatingActionButton\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:layout_marginEnd=\&quot;32dp\&quot; \n
+        android:layout_marginBottom=\&quot;32dp\&quot; \n
+        android:clickable=\&quot;true\&quot; \n
+        android:src=\&quot;@drawable/ic_add\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        tools:ignore=\&quot;SpeakableTextPresentCheck\&quot; /&gt; \n \n
+
+    &lt;androidx.recyclerview.widget.RecyclerView \n
+        android:id=\&quot;@+id/rv_notes\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;0dp\&quot; \n
+        android:layout_marginTop=\&quot;16dp\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toBottomOf=\&quot;@+id/tv_my_notes\&quot; /&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n \n
+
+            \\ note_rv_item.xml \n \n
+            &lt;androidx.constraintlayout.widget.ConstraintLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot; \n
+    android:layout_margin=\&quot;8dp\&quot; \n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot;&gt; \n \n
+
+    &lt;androidx.cardview.widget.CardView \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:background=\&quot;@color/beige\&quot; \n
+        app:cardCornerRadius=\&quot;30dp\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot;&gt; \n \n
+
+        &lt;RelativeLayout \n
+            android:layout_width=\&quot;match_parent\&quot; \n
+            android:layout_height=\&quot;match_parent\&quot; \n
+            android:background=\&quot;@color/light_blue\&quot; \n
+            android:padding=\&quot;32dp\&quot; \n
+            &gt; \n \n
+            &lt;TextView \n
+                android:id=\&quot;@+id/tv_note_content\&quot; \n
+                android:layout_width=\&quot;wrap_content\&quot; \n
+                android:layout_height=\&quot;wrap_content\&quot; \n
+                android:text=\&quot;Helllo\&quot; \n
+                android:layout_margin=\&quot;16dp\&quot; \n
+                android:layout_alignParentStart=\&quot;true\&quot; \n
+                android:fontFamily=\&quot;@font/poppins\&quot; \n
+                android:textColor=\&quot;@color/black\&quot; \n
+                android:textSize=\&quot;18sp\&quot; /&gt; \n \n
+
+            &lt;ImageView \n
+                android:id=\&quot;@+id/iv_delete\&quot; \n
+                android:layout_width=\&quot;wrap_content\&quot; \n
+                android:layout_height=\&quot;wrap_content\&quot; \n
+                android:layout_gravity=\&quot;end\&quot; \n
+                android:layout_margin=\&quot;4dp\&quot; \n
+                android:layout_alignParentEnd=\&quot;true\&quot; \n
+                app:srcCompat=\&quot;@drawable/ic_delete\&quot; /&gt; \n \n
+
+
+        &lt;/RelativeLayout&gt; \n
+
+    &lt;/androidx.cardview.widget.CardView&gt; \n
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n \n
+
+            \\ add_note_dialog.xml \n \n
+&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:layout_width=\&quot;wrap_content\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot; \n
+    android:gravity=\&quot;center\&quot; \n
+    android:padding=\&quot;8dp\&quot; \n
+    android:orientation=\&quot;vertical\&quot;&gt; \n \n
+
+
+    &lt;EditText \n
+        android:id=\&quot;@+id/et_note\&quot; \n
+        android:layout_width=\&quot;300dp\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:ems=\&quot;10\&quot; \n
+        android:padding=\&quot;8dp\&quot; \n
+        android:hint=\&quot;Add note here\&quot; \n
+        android:inputType=\&quot;textPersonName\&quot;/&gt; \n \n
+
+
+&lt;/LinearLayout&gt; \n
+        </item>
 
         <item> &lt;FrameLayout  \nxmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.LifeCycleFragment\&quot;&gt; \n \n </item>
 
-        <item>ViewModelFragment xml</item>
+        <item>&lt;LinearLayout \n
+xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    android:gravity=\&quot;center\&quot; \n
+    android:orientation=\&quot;vertical\&quot; \n \n
+    tools:context=\&quot;.ui.fragments.resultFragments.ViewModelFragment\&quot;&gt; \n \n
+
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/textView\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:layout_margin=\&quot;8dp\&quot; \n
+        android:textStyle=\&quot;bold\&quot;- \n
+        android:text=\&quot;Score \&quot; /&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_score\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; /&gt; \n \n
+
+    &lt;Button \n
+        android:id=\&quot;@+id/btn_increment\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:layout_margin=\&quot;16dp\&quot; \n
+        android:textAllCaps=\&quot;false\&quot; \n
+        android:text=\&quot;Increment\&quot; /&gt; \n
+&lt;/LinearLayout&gt; \n</item>
 
         <item>RoomDbFragment xml</item>
 
