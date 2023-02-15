@@ -87,7 +87,7 @@
 
         <item>Button button = findViewById(R.id.btn_click); \nTextView textView = findViewById(R.id.tv_name); \nEditText editText = findViewById(R.id.editText); \n \nbutton.setOnClickListener(v -> { \nString name = editText.getText().toString(); \neditText.setText(\&quot; \&quot;); \n \ntextView.setText(name); \n});</item>
 
-        <item>CheckBox javaCheckBox = findViewById(R.id.cb_java);\n        CheckBox kotlinCheckBox = findViewById(R.id.cb_kotlin);\n        TextView textView = findViewById(R.id.tv_language_name);\n        Button submitButton = findViewById(R.id.btn_submit);\n\n        javaCheckBox.setChecked(true);\n \n        submitButton.setOnClickListener(v -> {\n            if (javaCheckBox.isChecked() &amp;&amp; kotlinCheckBox.isChecked()){\n                textView.setText(&quot;You checked java and kotlin&quot;);\n            }else if(javaCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java\&quot;);\n            }else if(kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked kotlin\&quot;);</item>
+        <item>CheckBox javaCheckBox = findViewById(R.id.cb_java);\n        CheckBox kotlinCheckBox = findViewById(R.id.cb_kotlin);\n        TextView textView = findViewById(R.id.tv_language_name);\n        Button submitButton = findViewById(R.id.btn_submit);\n\n        javaCheckBox.setChecked(true);\n \n        submitButton.setOnClickListener(v -> {\n            if (javaCheckBox.isChecked() &amp;&amp; kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java and kotlin\&quot;);\n            }else if(javaCheckBox.isChecked()){\n                textView.setText(\&quot;You checked java\&quot;);\n            }else if(kotlinCheckBox.isChecked()){\n                textView.setText(\&quot;You checked kotlin\&quot;);</item>
 
         <item>RadioButton redRadioButton = findViewById(R.id.rb_red); \n Button submitButton = findViewById(R.id.btn_submit); \nLinearLayout layout = findViewById(R.id.linearLayout); \n \nsubmitButton.setOnClickListener(v -> { \nif (redRadioButton.isChecked()){ \nlayout.setBackgroundColor(Color.RED); \n redRadioButton.setChecked(false); \n }else{ \nlayout.setBackgroundColor(Color.WHITE); \n} \n}); \n</item>
 
@@ -115,13 +115,70 @@
 
         <item>RadioGroupFragment java</item>
 
-        <item>IntentFragment java</item>
+        <item>Button btn = findViewById(R.id.btn_other_activity);\n
+            btn.setOnClickListener(new View.OnClickListener() {\n
+                @Override\n
+                public void onClick(View view) {\n
+                    Intent intent = new Intent(this, NewActivity.class);\n
+                    startActivity(intent);\n
+                }\n
+            });</item>
 
-        <item>IntentPassDataFragment java</item>
+        <item>//MainActivity.java \n
+            EditText name, age;\n
+            Button btn = findViewById(R.id.btn_change_activity);\n
+            name = findViewById(R.id.ed_name);\n
+            age = findViewById(R.id.ed_age);\n\n
 
-        <item>IntentUrlFragment java</item>
+            btn.setOnClickListener(new View.OnClickListener() {\n
+                @Override\n
+                public void onClick(View view) {\n
+                    Intent intent = new Intent(this, NewActivity.class);\n
+                    intent.putExtra("name", String.valueOf(name.getText()));\n
+                    intent.putExtra("age", String.valueOf(age.getText()));\n
+                    startActivity(intent);\n
+                }\n
+            });\n
+            //NewActivity.java\n
+            TextView text;\n
+            text = findViewById(R.id.tv_data_received);\n
+            Intent intent = getIntent();\n
+            String str_name = intent.getStringExtra("name");\n
+            String str_age = intent.getStringExtra("age");\n
+            text.setText("Hello "+str_name+" in this new activity." +
+                "\nYour age: "+str_age);\n
+        </item>
 
-        <item>IntentEmailFragment java</item>
+        <item>
+            Button btn = findViewById(R.id.btn_go_to_url);\n
+        EditText url = findViewById(R.id.ed_url);\n
+
+        btn.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View view) {\n
+                Intent intent = new Intent(Intent.ACTION_VIEW);\n
+                intent.setData(Uri.parse(String.valueOf(url.getText())));\n
+                startActivity(intent);\n
+            }\n
+        });</item>
+
+        <item> EditText email_dest, subject, content;\n
+            Button btn = findViewById(R.id.btn_send_email);\n
+            email_dest = findViewById(R.id.ed_email_destination);\n
+            email_dest = findViewById(R.id.ed_subject);\n
+            email_dest = findViewById(R.id.ed_content);\n\n
+
+            btn.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View view) {\n
+                Intent intent = new Intent(Intent.ACTION_SEND);\n
+                intent.setType("message/rfc822");\n
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {String.valueOf(email_dest.getText())});\n
+                intent.putExtra(Intent.EXTRA_SUBJECT, String.valueOf(subject.getText()));\n
+                intent.putExtra(Intent.EXTRA_TEXT, String.valueOf(content.getText()));\n
+                startActivity(Intent.createChooser(intent, "Send email"));\n
+            }\n
+        });</item>
 
         <item>OptionMenuFragment java</item>
 
@@ -468,17 +525,17 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>&lt;ImageView \n android:id=\&quot;@+id/imageView\&quot;  \n android:layout_width=\&quot;300dp\&quot;  \nandroid:layout_height=\&quot;300dp\&quot; \nandroid:layout_margin=\&quot;32dp\&quot; \nandroid:src=\&quot;@drawable/image\&quot; /&gt;</item>
 
-        <item>&lt;LinearLayout xmlns:android=\&quot; \n http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n android:gravity=\&quot;center_horizontal|center_vertical\&quot; \n tools:context=\&quot;.ui.fragments.resultFragments.ButtonFragment\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_my_text\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click_me\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;  \n android:text=\&quot;Click me !\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout xmlns:android=\&quot; \n http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n android:gravity=\&quot;center_horizontal|center_vertical\&quot; \n tools:context=\&quot;.ui.fragments.resultFragments.ButtonFragment\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_my_text\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \n android:textColor=\&quot;@color/black\&quot; p\&quot; /&gt;\n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click_me\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;  \n android:text=\&quot;Click me !\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \n tools:context=\&quot;.ui.fragments.resultFragments.EditTextFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp&quot; /&gt; \n \n&lt;EditText \nandroid:id=\&quot;@+id/editText\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;8dp\&quot; \nandroid:hint=\&quot;Hi type your name and press ok !\&quot; \nandroid:minHeight=\&quot;48dp\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Click me !\&quot; /&gt; \n \n&lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \n tools:context=\&quot;.ui.fragments.resultFragments.EditTextFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n android:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;EditText \nandroid:id=\&quot;@+id/editText\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;8dp\&quot; \nandroid:hint=\&quot;Hi type your name and press ok !\&quot; \nandroid:minHeight=\&quot;48dp\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_click\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Click me !\&quot; /&gt; \n \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.CheckBoxFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_java\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Java\&quot;/&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_kotlin\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Kotlin\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.CheckBoxFragment\&quot;&gt; \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language_name\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n android:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_java\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Java\&quot;/&gt; \n \n&lt;CheckBox \nandroid:id=\&quot;@+id/cb_kotlin\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Kotlin\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n android:id=\&quot;@+id/linearLayout\&quot; \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RadioButtonFragment\&quot;&gt; \n \n&lt;RadioButton \nandroid:id=\&quot;@+id/rb_red&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:text=\&quot;Red background\&quot;/&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n&lt;/LinearLayout&gt;</item>
+        <item>&lt;LinearLayout \n android:id=\&quot;@+id/linearLayout\&quot; \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RadioButtonFragment\&quot;&gt; \n \n&lt;RadioButton \nandroid:id=\&quot;@+id/rb_red\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \n android:text=\&quot;Red background\&quot;/&gt; \n \n&lt;Button \na ndroid:id=\&quot;@+id/btn_submit\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Submit\&quot; /&gt; \n \n&lt;/LinearLayout&gt;</item>
 
-        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.SwitchFragment\&quot;&gt; \n \n &lt;TextView \nandroid:id=\&quot;@+id/tv_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;androidx.appcompat.widget.SwitchCompat \nandroid:id=\&quot;@+id/switch_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;/&gt; \n&lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n android:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.SwitchFragment\&quot;&gt; \n \n &lt;TextView \nandroid:id=\&quot;@+id/tv_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \n android:textColor=\&quot;@color/black\&quot; \n android:textSize=\&quot;24sp\&quot; /&gt; \n \n&lt;androidx.appcompat.widget.SwitchCompat \nandroid:id=\&quot;@+id/switch_on_off\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;/&gt; \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.ProgressBarFragment\&quot;&gt; \n \n&lt;ProgressBar \nandroid:id=\&quot;@+id/progressBar\&quot; \nstyle=\&quot;?android:attr/progressBarStyleLarge\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \n android:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n &lt;/LinearLayout&gt; \n</item>
 
         <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.DatePickerFragment\&quot;&gt; \n \n\&lt;DatePicker \nandroid:id=\&quot;@+id/datePicker\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_get_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Show date\&quot; /&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
 
@@ -500,13 +557,235 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>RadioGroupFragment xml</item>
 
-        <item>IntentFragment xml</item>
+        <item>// activity_main.xml \n
+            \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    android:orientation=\&quot;vertical\&quot; \n
+    android:gravity=\&quot;center\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.IntentFragment\&quot;\&gt; \n \n
+    \&lt;Button \n
+        android:id=\&quot;@+id/btn_other_activity\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:text=\&quot;Go to another activity\&quot;\&gt; \n
+    \&lt;/Button\&gt; \n
+\&lt;/LinearLayout\&gt; \n \n
 
-        <item>IntentPassDataFragment xml</item>
+            // new_activity.xml \n
+            \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    android:gravity=\&quot;center\&quot;\n
+    android:orientation=\&quot;vertical\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.IntentOtherFragment\&quot;\&gt; \n\n
+    \&lt;TextView\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:text=\&quot;Welcome to the other activity\&quot;\n
+        /\&gt;\n
+\&lt;/LinearLayout\&gt;</item>
 
-        <item>IntentUrlFragment xml</item>
+        <item>// activity_main.xml \n \n
+            \&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\&quot;\n
+            http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools \&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    tools:context=\&quot;.ui.fragments.resultFragments.IntentPassDataFragment\&quot;\&gt;\n\n
 
-        <item>IntentEmailFragment xml</item>
+    \&lt;LinearLayout\n
+        android:id=\&quot;@+id/linear_layout_pass_data\&quot;\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:orientation=\&quot;vertical\&quot;\n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot;\n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot;\n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot;\n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot;\&gt;\n\n
+
+        \&lt;TextView \n
+            android:layout_width=\&quot;wrap_content\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:text=\&quot;Please fill your information\&quot;\n
+            android:layout_marginBottom=\&quot;10dp\&quot; /\&gt;\n\n
+
+        \&lt;TextView\n
+            android:id=\&quot;@+id/tv_name\&quot;\n
+            android:layout_width=\&quot;match_parent\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:layout_marginBottom=\&quot;10dp\&quot;\n
+            android:text=\&quot;Full name\&quot; /\&gt;\n\n
+
+        \&lt;EditText\n
+            android:id=\&quot;@+id/ed_name\&quot;\nno
+            android:layout_width=\&quot;match_parent\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:hint=\&quot;Your name\&quot;\n
+            android:layout_marginBottom=\&quot;20dp\&quot;\n
+            android:inputType=\&quot;textPersonName\&quot; /\&gt;\n\n
+
+        \&lt;TextView\n
+            android:id=\&quot;@+id/tv_age\&quot;\n
+            android:layout_width=\&quot;match_parent\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:textSize=\&quot;20sp\&quot;\n
+            android:layout_marginBottom=\&quot;10dp\&quot;\n
+            android:text=\&quot;Age\&quot; /\&gt;\n\n
+
+        \&lt;EditText\n
+            android:id=\&quot;@+id/ed_age\&quot;\n
+            android:layout_width=\&quot;match_parent\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:hint=\&quot;Age\&quot;\n
+            android:inputType=\&quot;textPersonName\&quot; /\&gt;\n\n
+
+        \&lt;Button\n
+            android:id=\&quot;@+id/btn_change_activity\&quot;\n
+            android:layout_width=\&quot;wrap_content\&quot;\n
+            android:layout_height=\&quot;wrap_content\&quot;\n
+            android:layout_gravity=\&quot;center\&quot;\n
+            android:text=\&quot;Change activity\&quot; /&gt;\n
+    \&lt;/LinearLayout\&gt;\n\n
+
+\&lt;/androidx.constraintlayout.widget.ConstraintLayout\&gt;\n\n
+
+        //new_activity.xml\n
+        \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    android:gravity=\&quot;center\&quot;\n
+    tools:context=\&quot;.ui.fragments.resultFragments.IntentPassDataOtherFragment\&quot;\&gt;\n \n
+
+    \&lt;TextView\n
+        android:id=\&quot;@+id/tv_data_received\&quot;\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:text=\&quot;Hello\&quot;\n
+        android:textColor=\&quot;@color/black\&quot;\n
+        android:textSize=\&quot;24sp\&quot; /\&gt;\n\n
+
+\&lt;/LinearLayout\&gt;</item>
+
+        <item>\&lt;LinearLayout \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    android:orientation=\&quot;vertical\&quot;\n
+    android:gravity=\&quot;center\&quot; \&gt;\n\n
+
+    \&lt;TextView\n
+        android:text=\&quot;Hello, there you can put your url\&quot; /\&gt;\n
+
+    \&lt;EditText\n
+        android:id=\&quot;@+id/ed_url\&quot;\n
+        android:layout_width=\&quot;match_parent\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:hint=\&quot;URL\&quot; /\&gt;\n\n
+
+    \&lt;Button\n
+        android:id=\&quot;@+id/btn_go_to_url\&quot;\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:text=\&quot;Go to URl\&quot; /\&gt;\n
+
+\&lt;/LinearLayout\&gt;</item>
+
+        <item>\&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    tools:context=\&quot;.ui.fragments.resultFragments.IntentEmailFragment\&quot;\&gt;\n\n
+
+        \&lt;LinearLayout\n
+         \t   android:id=\&quot;@+id/linear_layout_email\&quot;\n
+         \t   android:layout_width=\&quot;match_parent\&quot;\n
+         \t   android:layout_height=\&quot;wrap_content\&quot;\n
+         \t   android:orientation=\&quot;vertical\&quot;\n
+         \t   app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot;\n
+        \t app:layout_constraintEnd_toEndOf=\&quot;parent\&quot;\n
+        \t app:layout_constraintStart_toStartOf=\&quot;parent\&quot;\n
+        \t app:layout_constraintTop_toTopOf=\&quot;parent\&quot;\n
+        \t    android:padding=\&quot;15dp\&quot; \&gt;\n\n
+
+            \&lt;TextView\n
+                android:id=\&quot;@+id/tv_please_fill\&quot;\n
+                android:layout_width=\&quot;wrap_content\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;4dp\&quot;\n
+                android:text=\&quot;@string/hello_blank_fragment\&quot;\n
+                android:textColor=\&quot;@color/black\&quot;\n
+                android:textSize=\&quot;24sp\&quot; /\&gt;\n\n
+
+            \&lt;TextView\n
+                android:id=\&quot;@+id/tv_email_destination\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;15dp\&quot;\n
+                android:text=\&quot;Email destination\&quot;\n
+                android:textColor=\&quot;@color/black\&quot;\n
+                android:textSize=\&quot;20sp\&quot; /\&gt;\n\n
+
+            \&lt;EditText\n
+                android:id=\&quot;@+id/ed_email_destination\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;10dp\&quot;\n
+                android:ems=\&quot;10\&quot;\n
+                android:hint=\&quot;Destination email\&quot;\n
+                android:inputType=\&quot;textEmailAddress\&quot;/\&gt;\n\n
+
+            \&lt;TextView\n
+                android:id=\&quot;@+id/tv_subject\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;15dp\&quot;\n
+                android:textColor=\&quot;@color/black\&quot;\n
+                android:text=\&quot;Subject\&quot;\n
+                android:textSize=\&quot;20sp\&quot; /\&gt;\n\n
+
+            \&lt;EditText\n
+                android:id=\&quot;@+id/ed_subject\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;10dp\&quot;\n
+                android:ems=\&quot;10\&quot;\n
+                android:hint=\&quot;Subject\&quot;\n
+                android:inputType=\&quot;textPersonName\&quot;/\&gt;\n\n
+
+            \&lt;TextView\
+                android:id=\&quot;@+id/tv_content\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;15dp\&quot;\n
+                android:text=\&quot;Email content\&quot; /\&gt;\n\n
+
+            \&lt;EditText\n
+                android:id=\&quot;@+id/ed_content\&quot;\n
+                android:layout_width=\&quot;match_parent\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_marginTop=\&quot;10dp\&quot;\n
+                android:ems=\&quot;10\&quot;\n
+                android:hint=\&quot;Write your email there\&quot;\n
+                android:inputType=\&quot;textMultiLine\&quot;/&gt;\n\n
+
+            \&lt;Button\n
+                android:id=\&quot;@+id/btn_send_email\&quot;\n
+                android:layout_width=\&quot;wrap_content\&quot;\n
+                android:layout_height=\&quot;wrap_content\&quot;\n
+                android:layout_gravity=\&quot;center\&quot;\n
+                android:layout_marginTop=\&quot;25dp\&quot;\n
+                android:text=\&quot;Send email\&quot; /\&gt;\n\n
+        \&lt;/LinearLayout\&gt;
+
+        \&lt;/androidx.constraintlayout.widget.ConstraintLayout\&gt;</item>
 
         <item>OptionMenuFragment xml</item>
 
@@ -526,7 +805,7 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>Anim4Fragment xml</item>
 
-        <item>&lt;FrameLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\n&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \tools:context=\&quot;.ui.fragments.resultFragments.ListViewFragment\&quot;&gt; \n \n&lt;ListView \nandroid:id=\&quot;@+id/list\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot;/&gt; \n \n&lt;/FrameLayout&gt; \n</item>
+        <item>&lt;FrameLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\n\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \tools:context=\&quot;.ui.fragments.resultFragments.ListViewFragment\&quot;&gt; \n \n&lt;ListView \nandroid:id=\&quot;@+id/list\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot;/&gt; \n \n&lt;/FrameLayout&gt; \n</item>
 
         <item>//activity_main.xml \n \n&lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \ntools:context=\&quot;.ui.fragments.resultFragments.RecyclerViewFragment\&quot;&gt; \n \n&lt;androidx.recyclerview.widget.RecyclerView \nandroid:id=\&quot;@+id/rv_languages\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; /&gt; \n&lt;/FrameLayout&gt; \n \n// languages_rv_item.xml \n \n&lt;androidx.constraintlayout.widget.ConstraintLayout  \n\xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot;&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_language\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textSize=\&quot;24sp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:padding=\&quot;8dp\&quot; \n \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot;/&gt; \n \n&lt;View \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;1dp\&quot; \nandroid:background=\&quot;@color/black\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/tv_language\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot;/&gt; \n \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 

@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.resultFragments.IntentPassDataFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/linear_layout_pass_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please fill your information"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            android:text="Full name" />
+
+        <EditText
+            android:id="@+id/ed_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Your name"
+            android:minHeight="48dp"
+            android:layout_marginBottom="20dp"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            android:text="Age" />
+
+        <EditText
+            android:id="@+id/ed_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="48dp"
+            android:hint="Age"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btn_change_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Change activity" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
