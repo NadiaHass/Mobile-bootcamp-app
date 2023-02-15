@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ui.fragments.resultFragments.IntentFragment">
+    tools:context=".ui.fragments.resultFragments.IntentPassDataOtherFragment">
 
-    <Button
-        android:id="@+id/btn_other_activity"
+
+    <TextView
+        android:id="@+id/tv_data_received"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to another activity">
-    </Button>
+        android:text="Hello"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
 </LinearLayout>

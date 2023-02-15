@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ui.fragments.resultFragments.IntentFragment">
+    android:orientation="vertical"
+    tools:context=".ui.fragments.resultFragments.IntentOtherFragment">
 
-    <Button
-        android:id="@+id/btn_other_activity"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to another activity">
-    </Button>
+        android:text="Welcome to the other activity"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
 </LinearLayout>
