@@ -217,9 +217,82 @@
 
 </item>
 
-        <item>PopupMenuFragment java</item>
+        <item>public class MainActivity extends AppCompatActivity {\n
+            Button btn;\n
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+            btn = findViewById(R.id.btn_popup);\n\n
 
-        <item>ContextMenuFragment java</item>
+        btn.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                // Show the popup menu\n
+                showPopupMenu(v);\n
+            }\n
+        });\n
+        }\n
+            private void showPopupMenu(View v) {\n
+        PopupMenu popupMenu = new PopupMenu(getActivity(), v);\n
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());\n\n
+
+        // Set up the click listener for the popup menu items\n
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {\n
+            @Override\n
+            public boolean onMenuItemClick(MenuItem item) {\n
+                if (item.getItemId() == R.id.option1) {\n
+                    Toast.makeText(getContext(), "You choosed the first option", Toast.LENGTH_SHORT).show();\n
+                    return true;\n
+                } else if (item.getItemId() == R.id.option2) {\n
+                    Toast.makeText(getContext(), "You choosed the second option", Toast.LENGTH_SHORT).show();\n
+                    return true;\n
+                } else if (item.getItemId() == R.id.option3) {\n
+                    Toast.makeText(getContext(), "You choosed the third option", Toast.LENGTH_SHORT).show();\n
+                    return true;\n
+                } else {\n
+                    return false;\n
+                }\n
+            }\n
+        });\n
+        // Show the popup menu\n
+        popupMenu.show();\n
+    }\n
+        }</item>
+
+        <item>public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        Button btn1, btn2 , btn3;\n
+        btn1 = (Button) view.findViewById(R.id.btn1_context);\n
+        btn2 = (Button) view.findViewById(R.id.btn2);\n
+        btn3 = (Button) view.findViewById(R.id.btn3);\n\n
+
+        registerForContextMenu(btn1);\n
+        registerForContextMenu(btn2);\n
+        registerForContextMenu(btn3);\n
+
+        }\n\n
+               @Override\n
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {\n
+        super.onCreateContextMenu(menu, v, menuInfo);\n
+        MenuInflater inflater = getActivity().getMenuInflater();\n
+        inflater.inflate(R.menu.context_menu, menu);\n
+    }\n\n
+              @Override\n
+    public boolean onContextItemSelected(@NonNull MenuItem item) {\n
+        switch (item.getItemId()) {\n
+            case R.id.delete:\n
+                return true;\n
+            case R.id.add_new:\n
+                return true;\n
+            case R.id.move_to:\n
+                return true;\n
+            default:\n
+                return super.onContextItemSelected(item);\n
+        }\n
+    }\n
+        }</item>
 
         <item>Button btn = findViewById(R.id.btn_click_me);\n
         EditText name = findViewById(R.id.ed_name_alert_dialog);\n
@@ -232,13 +305,14 @@
                         "\nDo you want to delete your name ?");\n
         \t\t        dialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {\n
         \t\t\t          @Override\n
-        \t\t  \t          public void onClick(DialogInterface dialogInterface, int i) {\n
+        \t\t  \t        public void onClick(DialogInterface dialogInterface, int i) {\n
         \t\t\t \t               name.setText("");\n
         \t\t \t          }\n
           \t\t      });\n
          \t\t       dialog.setNegativeButton("no", new DialogInterface.OnClickListener() {\n
            \t\t\t         @Override\n
-            \t\t\t        public void onClick(DialogInterface dialogInterface, int i) {\n\n
+            \t\t\t        public void onClick(DialogInterface dialogInterface, int i) {\n
+            \t\t\t\t dialogInterface.dismiss();\n
              \t\t\t       }\n
             \t\t    });\n
             \t\t    dialog.show();\n
@@ -867,9 +941,70 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 \&lt;/FrameLayout\&gt;
         </item>
 
-        <item>PopupMenuFragment xml</item>
+        <item>// activity_main.xml\n
+        \&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;\n
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;\n
+    android:layout_width=&quot;match_parent&quot;\n
+    android:layout_height=&quot;match_parent&quot;\n
+    android:gravity=&quot;center&quot;\&gt;\n\n
 
-        <item>ContextMenuFragment xml</item>
+    \&lt;Button\n
+        android:id=&quot;@+id/btn_popup&quot;\n
+        android:layout_width=&quot;wrap_content&quot;\n
+        android:layout_height=&quot;wrap_content&quot;\n
+        android:text=&quot;Click me!&quot; \n
+        …/\&gt;\n\n
+
+\&lt;/LinearLayout\&gt;\n\n
+        //popup_menu.xml\n
+        \&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;\&gt;\n
+    \&lt;item\n
+        android:id=&quot;@+id/option1&quot;\n
+        android:title=&quot;Option1&quot;/\&gt;\n
+    \&lt;item\n
+        android:id=&quot;@+id/option2&quot;\n
+        android:title=&quot;Option2&quot;/\&gt;\n
+    \&lt;item\n
+        android:id=&quot;@+id/option3&quot;\n
+        android:title=&quot;Option3&quot;/\&gt;\n
+\&lt;/menu\&gt;</item>
+
+        <item> //activity_main.xml\n
+    \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+        xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+        android:layout_width=\&quot;match_parent\&quot;\n
+        android:layout_height=\&quot;match_parent\&quot;\n
+        android:orientation=\&quot;vertical\&quot;\n
+        android:padding=\&quot;15dp\&quot;\&gt;\n\n
+
+        \&lt;TextView\n
+            android:id=\&quot;@+id/tv_long_press\&quot;\n
+            android:text=\&quot;Please long press in the item\&quot; /\&gt;\n\n
+
+        \&lt;Button\n
+            android:id=\&quot;@+id/btn1_context\&quot;\n
+            android:text=\&quot;First button\&quot; /\&gt;\n\n
+
+        \&lt;Button\n
+            android:id=\&quot;@+id/btn2\&quot;\n
+            android:text=\&quot;Second button\&quot; /\&gt;\n\n
+
+        \&lt;Button\n
+            android:id=\&quot;@+id/btn3\&quot;\n
+            android:text=\&quot;Third button\&quot; /\&gt;\n
+    \&lt;/LinearLayout\&gt;\n\n
+            // context_menu.xml \n
+            \&lt;menu xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\&gt;\n
+    \&lt;item\n
+        android:id=\&quot;@+id/delete\&quot;\n
+        android:title=\&quot;Delete\&quot;/\&gt;\n
+    \&lt;item\n
+        android:id=\&quot;@+id/add_new\&quot;\n
+        android:title=\&quot;Add\&quot;/\&gt;\n
+    \&lt;item\n
+        android:id=\&quot;@+id/move_to\&quot;\n
+        android:title=\&quot;Move to\&quot;/\&gt;\n
+\&lt;/menu\&gt;</item>
 
         <item>//activity_main.xml\n
             \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n

@@ -38,7 +38,7 @@ public class AlertDialogFragment extends Fragment {
                 dialog.setNegativeButton("no", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        dialogInterface.dismiss();
                     }
                 });
                 dialog.show();
