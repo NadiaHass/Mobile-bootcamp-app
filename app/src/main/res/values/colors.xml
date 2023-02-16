@@ -15,4 +15,11 @@
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
+
+    <color name="color0">#E0F7FA</color>
+    <color name="color1">#B2EBF2</color>
+    <color name="color2">#80DEEA</color>
+    <color name="color3">#00BCD4</color>
+    <color name="color4">#FFECB3</color>
+    <color name="color5">#FFCA28</color>
 </resources>

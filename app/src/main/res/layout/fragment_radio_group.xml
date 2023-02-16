@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".ui.fragments.resultFragments.RadioGroupFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RadioGroup
+        android:id="@+id/rg_hr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-</FrameLayout>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Horizantal Radio Group"
+    android:textStyle="bold" />
+    <RadioButton
+        android:id="@+id/btn_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Show"/>
+        <RadioButton
+            android:id="@+id/btn_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Hide"/>
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/rg_vr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vertical Radio Group"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+    <RadioButton
+        android:id="@+id/rb_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type 1"/>
+    <RadioButton
+        android:id="@+id/rb_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type 2"/>
+    <RadioButton
+        android:id="@+id/rb_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type 3"/>
+    <RadioButton
+        android:id="@+id/rb_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="type 4"/>
+
+</RadioGroup>
+</LinearLayout>
