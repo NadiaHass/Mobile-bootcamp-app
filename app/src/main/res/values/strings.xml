@@ -180,7 +180,42 @@
             }\n
         });</item>
 
-        <item>OptionMenuFragment java</item>
+        <item>//MainActivity.java\n
+            public class MainActivity extends AppCompatActivity {\n
+            Frame frame;
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+            frame = view.findViewById(R.id.menu_background);\n
+            ...\n
+            }\n
+        @Override\n
+        public boolean onCreateOptionsMenu(Menu menu) {\n
+            getMenuInflater().inflate(R.menu.main_menu, menu);\n
+            return true;\n
+        }\n
+        @Override\n
+        public boolean onOptionsItemSelected(MenuItem item) {\n
+          switch (item.getItemId()) {\n
+                case R.id.action_blue:\n
+                    int color = ContextCompat.getColor(this, R.color.blue);\n
+                    frame.setBackgroundColor(color);\n
+                    return true;\n
+                case R.id.action_red:\n
+                    int color_red = ContextCompat.getColor(this, R.color.red);\n
+                    frame.setBackgroundColor(color_red);\n
+                    return true;\n
+                case R.id.action_green:\n
+                    int color_green = ContextCompat.getColor(this, R.color.green);\n
+                    frame.setBackgroundColor(color_green);\n
+                    return true;\n
+                default:\n
+                    return super.onOptionsItemSelected(item);\n
+            }\n
+        }\n
+    }\n
+
+</item>
 
         <item>PopupMenuFragment java</item>
 
@@ -787,13 +822,55 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         \&lt;/androidx.constraintlayout.widget.ConstraintLayout\&gt;</item>
 
-        <item>OptionMenuFragment xml</item>
+        <item>// res/menu/action_menu.xml \n
+            \&lt;menu xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\&gt;\n\n
+    \&lt;item\n
+        android:id=\&quot;@+id/action_blue\&quot;\n
+        android:title=\&quot;Blue\&quot; /\&gt;\n
+    \&lt;item\n
+        android:id=\&quot;@+id/action_red\&quot;\n
+        android:title=\&quot;Red\&quot; /\&gt;\n
+    \&lt;item\n
+        android:id=\&quot;@+id/action_green\&quot;\n
+        android:title=\&quot;Green\&quot; /\&gt;\n\n
+
+\&lt;/menu\&gt;\n\n
+            //activity_main.xml \n
+\&lt;FrameLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+    android:id=\&quot;@+id/menu_background\&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n\n
+
+\&lt;/FrameLayout\&gt;
+        </item>
 
         <item>PopupMenuFragment xml</item>
 
         <item>ContextMenuFragment xml</item>
 
-        <item>AlertDialogFragment xml</item>
+        <item>//activity_main.xml\n
+            \&lt;LinearLayout xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;\n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot;\n
+    android:layout_width=\&quot;match_parent\&quot;\n
+    android:layout_height=\&quot;match_parent\&quot;\n
+    android:gravity=\&quot;center\&quot;\n
+    tools:context=\&quot;.ui.fragments.resultFragments.AlertDialogFragment\&quot;\&gt;\n\n
+        \&lt;TextView\n…\n
+            android:text=\&quot;Enter your name\&quot;/\&gt;\n\n
+
+    \&lt;EditText\n
+        android:id=\&quot;@+id/ed_name_alert_dialog\&quot;\n
+        android:layout_width=\&quot;match_parent\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:hint=\&quot;Name\&quot;/\&gt;\n\n
+    \&lt;Button\n
+        android:id=\&quot;@+id/btn_click_me\&quot;\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:text=\&quot;Click me!\&quot;\n
+    /\&gt;\n
+\&lt;/LinearLayout\&gt;</item>
 
         <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \nxmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.FragmentsFragment\&quot;&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment1\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \nandroid:text=\&quot;Fragment 1\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment2\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:text=\&quot;Fragment 2\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment1\&quot;  \n/&gt; \n \n&lt;androidx.fragment.app.FragmentContainerView \nandroid:id=\&quot;@+id/container\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;0dp\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment2\&quot;  \n/&gt; \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
