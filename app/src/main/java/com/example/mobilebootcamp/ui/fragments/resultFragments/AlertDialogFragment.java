@@ -28,7 +28,7 @@ public class AlertDialogFragment extends Fragment {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
                 dialog.setTitle("Welcome");
                 dialog.setMessage("Hello "+String.valueOf(name.getText())+" this is an alert dialog." +
-                        "\n Do you want to delete your name ?");
+                        "\nDo you want to delete your name ?");
                 dialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
