@@ -31,10 +31,6 @@ public class IntentFragment extends Fragment {
 
                 IntentOtherFragment newFragment = new IntentOtherFragment();
                 fragmentTransaction.replace(R.id.fragment_container, newFragment);
-
-                //This will allow the user to navigate back
-                // to the current fragment by pressing the back button.
-                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
             }

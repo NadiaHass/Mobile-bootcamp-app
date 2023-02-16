@@ -23,12 +23,14 @@ public class IntentUrlFragment extends Fragment {
         Button btn =(Button) view.findViewById(R.id.btn_go_to_url);
         EditText url =(EditText) view.findViewById(R.id.ed_url);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btn.setOnClickListener(view1 -> {
+            try {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(String.valueOf(url.getText())));
                 startActivity(intent);
+
+            }catch (Exception e){
+
             }
         });
 

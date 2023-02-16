@@ -22,15 +22,6 @@
             android:padding="15dp">
 
             <TextView
-                android:id="@+id/tv_please_fill"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/hello_blank_fragment"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
                 android:id="@+id/tv_email_destination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

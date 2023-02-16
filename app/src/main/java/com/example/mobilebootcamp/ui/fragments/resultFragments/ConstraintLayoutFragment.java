@@ -7,60 +7,50 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.mobilebootcamp.R;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConstraintLayoutFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ConstraintLayoutFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class ConstraintLayoutFragment extends Fragment implements View.OnClickListener {
+boolean clicked=false;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ConstraintLayoutFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ConstraintLayoutFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ConstraintLayoutFragment newInstance(String param1, String param2) {
-        ConstraintLayoutFragment fragment = new ConstraintLayoutFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_constraint_layout, container, false);
+        View view=inflater.inflate(R.layout.fragment_constraint_layout, container, false);
+        ViewGroup layout=(ViewGroup)view;
+        int childCount=layout.getChildCount();
+        for (int i=0;i<childCount;i++)layout.getChildAt(i).setOnClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (clicked)return;
+        clicked=true;
+        String message;
+        switch (view.getId()){
+            case R.id.btn_0:message="I am view_0\nmy position is left to left of parent and top to top of parent";break;
+            case R.id.btn_1:message="I am view_1\nmy position is top to top of parent and left to right of view 0 ";break;
+            case R.id.btn_2:message="I am view_2\nmy position is left to left of parent and top to bottom of view 0";break;
+            case R.id.btn_3:message="I am view_3\nmy position is right to right of parent and top to top of parent";break;
+            case R.id.btn_4:message="I am view_4\nmy position is left to right of view2 and right to left of view3";break;
+            case R.id.btn_5:message="I am view_5\nmy position is top,right,left,bottom to top,right,left,bottom of parent";break;
+            case R.id.btn_6:message="I am view_6\nmy position is left to left of parent and top to bottom of view 5";break;
+            case R.id.btn_7:message="I am view_7\nmy position is top to top of parent and bottom to bottom of view 6 ";break;
+            case R.id.btn_8:message="I am view_8\nmy position is center between view 5 bottom and parent bottom,right and left to right of view 9";break;
+            case R.id.btn_9:message="I am view_9\nmy position  is center between view 5 bottom and parent bottom,left and right to left of view 8\"";break;
+            case R.id.btn_10:message="I am view_10\nmy position is right to left of view 11 and parent bottom,left with weight 1 ";break;
+            case R.id.btn_11:message="I am view_11\nmy position is bottom to bottom of parent and right to right of parent ";break;
+
+            default:message="hi";
+        }
+        Snackbar.make(view,message, BaseTransientBottomBar.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+        clicked=false;
     }
 }
