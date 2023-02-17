@@ -2,65 +2,76 @@ package com.example.mobilebootcamp.ui.fragments.resultFragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.example.mobilebootcamp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OptionMenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class OptionMenuFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public OptionMenuFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OptionMenuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OptionMenuFragment newInstance(String param1, String param2) {
-        OptionMenuFragment fragment = new OptionMenuFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    FrameLayout frame;
+    private Toolbar toolbar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_option_menu, container, false);
+        frame = view.findViewById(R.id.menu_background);
+        toolbar = view.findViewById(R.id.toolbar);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_option_menu, container, false);
+        return view;
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Set the fragment's options menu to be shown in the app bar
+        setHasOptionsMenu(true);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.option_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_blue:
+                int color = ContextCompat.getColor(getContext(), R.color.blue);
+                frame.setBackgroundColor(color);
+                // Do something
+                return true;
+            case R.id.action_red:
+                int color_red = ContextCompat.getColor(getContext(), R.color.red);
+                frame.setBackgroundColor(color_red);
+                // Do something else
+                return true;
+            case R.id.action_green:
+                int color_green = ContextCompat.getColor(getContext(), R.color.green);
+                frame.setBackgroundColor(color_green);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
     }
 }
