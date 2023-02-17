@@ -1,5 +1,7 @@
 package com.example.mobilebootcamp.ui.fragments.resultFragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,60 +9,31 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.mobilebootcamp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link IntentUrlFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class IntentUrlFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public IntentUrlFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment IntentUrlFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static IntentUrlFragment newInstance(String param1, String param2) {
-        IntentUrlFragment fragment = new IntentUrlFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_intent_url, container, false);
+        View view =inflater.inflate(R.layout.fragment_intent_url, container, false);
+        Button btn =(Button) view.findViewById(R.id.btn_go_to_url);
+        EditText url =(EditText) view.findViewById(R.id.ed_url);
+
+        btn.setOnClickListener(view1 -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(String.valueOf(url.getText())));
+                startActivity(intent);
+
+            }catch (Exception e){
+
+            }
+        });
+
+        return view;
     }
 }

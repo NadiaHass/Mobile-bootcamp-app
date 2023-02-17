@@ -40,6 +40,8 @@ tools:context=".ui.activities.LessonsActivity">
     android:layout_height="match_parent"
     android:nestedScrollingEnabled="true"
     android:padding="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:clipToPadding="false"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

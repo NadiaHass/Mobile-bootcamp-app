@@ -1,20 +1,16 @@
 package com.example.mobilebootcamp.ui.activities;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 
 import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.databinding.ActivityLessonBinding;
 import com.example.mobilebootcamp.models.Lesson;
 import com.example.mobilebootcamp.ui.fragments.JavaCodeFragment;
 import com.example.mobilebootcamp.ui.fragments.XmlCodeFragment;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class LessonActivity extends AppCompatActivity {
     private ActivityLessonBinding binding;
