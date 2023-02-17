@@ -12,8 +12,7 @@ import com.example.mobilebootcamp.models.content.Note;
 import java.util.List;
 
 public class NotesViewModel extends AndroidViewModel {
-    private NotesDatabase notesDatabase;
-    private InsertNoteAsyncTask myTask;
+    private final NotesDatabase notesDatabase;
 
     public NotesViewModel(Application application) {
         super(application);
@@ -25,14 +24,12 @@ public class NotesViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Note>> getAllNotes(){
-        LiveData<List<Note>> notesList = notesDatabase.noteDao().getAllNotes();
-       return notesList;
+        return notesDatabase.noteDao().getAllNotes();
     }
 
     public void deleteNote(Note note){
         new DeleteNoteAsyncTask(notesDatabase).execute(note);
     }
-
 
 
     private static class DeleteNoteAsyncTask extends AsyncTask<Note , Void , Void>{

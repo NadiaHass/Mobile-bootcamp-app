@@ -28,7 +28,6 @@ public class ModulesActivity extends AppCompatActivity {
 
     }
 
-
     private void setupRecyclerView(ArrayList<Module> modules) {
         ModuleAdapter moduleAdapter = new ModuleAdapter(modules , this);
         binding.rvModules.setLayoutManager(new LinearLayoutManager(this , RecyclerView.VERTICAL , false));
@@ -49,7 +48,7 @@ public class ModulesActivity extends AppCompatActivity {
         modules.add(new Module("SQLite" , 33 , 34 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Architecture components" , 34 , 36 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         modules.add(new Module("Room database" , 36 , 37 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Firebase" , 37 , 37 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Firebase" , 37 , 39 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
         return modules;
     }
 
