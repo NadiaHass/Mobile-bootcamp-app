@@ -76,6 +76,10 @@
 
         <item>Room Database</item>
 
+        <item>Firebase authentication</item>
+
+        <item>Firestore</item>
+
     </string-array>
 
     <string-array name="java_code">
@@ -743,6 +747,9 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>RoomDbFragment java</item>
 
+        <item>AuthFragment</item>
+
+        <item>FirestoreFragment</item>
 
     </string-array>
 
@@ -1738,6 +1745,11 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
 
         <item>RoomDbFragment xml</item>
 
+        <item>AuthFragment</item>
+
+        <item>FirestoreFragment</item>
+
+
     </string-array>
 
     <string-array name="result_fragment_name">
@@ -1814,6 +1826,10 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
         <item>ViewModelFragment</item>
 
         <item>RoomDbFragment</item>
+
+        <item>AuthFragment</item>
+
+        <item>FirestoreFragment</item>
 
     </string-array>
 

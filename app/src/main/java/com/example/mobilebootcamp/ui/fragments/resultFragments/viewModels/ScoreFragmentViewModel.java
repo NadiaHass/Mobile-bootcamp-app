@@ -1,4 +1,4 @@
-package com.example.mobilebootcamp.data;
+package com.example.mobilebootcamp.ui.fragments.resultFragments.viewModels;
 
 import androidx.lifecycle.ViewModel;
 

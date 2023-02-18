@@ -3,7 +3,6 @@ package com.example.mobilebootcamp.ui.fragments.resultFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mobilebootcamp.R;
-import com.example.mobilebootcamp.data.ScoreFragmentViewModel;
+import com.example.mobilebootcamp.ui.fragments.resultFragments.viewModels.ScoreFragmentViewModel;
 
 public class ViewModelFragment extends Fragment {
 
