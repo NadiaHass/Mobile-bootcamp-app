@@ -56,11 +56,11 @@
 
         <item>Fragments</item>
 
-        <item>Anim1</item>
+        <item>AnimFragment</item>
 
-        <item>Anim2</item>
+        <item>DrawFragment</item>
 
-        <item>Anim3</item>
+        <item>CompDrawFragment</item>
 
         <item>Anim4</item>
 
@@ -193,7 +193,7 @@
 
         <item>//MainActivity.java\n
             public class MainActivity extends AppCompatActivity {\n
-            Frame frame;
+            Frame frame; \n
     @Override\n
     protected void onCreate(Bundle savedInstanceState) {\n
         super.onCreate(savedInstanceState);\n
@@ -275,9 +275,9 @@
     protected void onCreate(Bundle savedInstanceState) {\n
         super.onCreate(savedInstanceState);\n
         Button btn1, btn2 , btn3;\n
-        btn1 = (Button) view.findViewById(R.id.btn1_context);\n
-        btn2 = (Button) view.findViewById(R.id.btn2);\n
-        btn3 = (Button) view.findViewById(R.id.btn3);\n\n
+        btn1 = (Button) findViewById(R.id.btn1_context);\n
+        btn2 = (Button) findViewById(R.id.btn2);\n
+        btn3 = (Button) findViewById(R.id.btn3);\n\n
 
         registerForContextMenu(btn1);\n
         registerForContextMenu(btn2);\n
@@ -345,11 +345,96 @@
 
         });</item>
 
-        <item>Anim1Fragment java</item>
+        <item> View moraba3=findViewById(R.id.moraba3);\n
+RadioGroup animGroup=findViewById(R.id.anim);\n
+RadioGroup durationGroup=findViewById(R.id.duration);\n
+RadioGroup interpolatorGroup=findViewById(R.id.interpolator);\n
+moraba3.setOnClickListener(new View.OnClickListener() {\n
+    @Override\n
+    public void onClick(View view) {\n
+        moraba3.startAnimation(currentAnimation);\n
+    }\n
+});\n
+animGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {\n
+    @Override\n
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {\n
+        switch (i){\n
+            case R.id.alpha:\n
+                currentAnimation=alpha;\n
+                break;\n
+            case R.id.scale:\n
+                currentAnimation=scale;\n
+                break;\n
+            case R.id.rotate:\n
+                currentAnimation=rotate;\n
+                break;\n
+            case R.id.translate:\n
+                currentAnimation=translate;\n
+                break;\n
+            default:\n
+                break;\n
+        }\n
+        currentAnimation.setDuration(duration);\n
+        currentAnimation.setInterpolator(currentInterpolator);\n
+    }\n
+});\n
+durationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {\n
+    @Override\n
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {\n
+        switch (i){\n
+            case R.id.short_time:\n
+                duration=500;\n
+            default:\n
+                duration=1000;\n
+        }\n
+        currentAnimation.setDuration(duration);\n
+    }\n
+});\n
+interpolatorGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {\n
+    @Override\n
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {\n
+       switch (i){\n
+           case R.id.linear :\n
+               currentInterpolator=new LinearInterpolator();\n
+               break;\n
+           case R.id.accelerate :\n
+               currentInterpolator=new AccelerateInterpolator();\n
+               break;\n
+           case R.id.decelerate :\n
+               currentInterpolator=new DecelerateInterpolator();\n
+               break;\n
+           case R.id.anticipate :\n
+               currentInterpolator=new AnticipateInterpolator();\n
+               break;\n
+           case R.id.overshoot :\n
+               currentInterpolator=new OvershootInterpolator();\n
+               break;\n
+           case R.id.bounce :\n
+               currentInterpolator=new BounceInterpolator();\n
+               break;\n
+           case R.id.cycle :\n
+               currentInterpolator=new CycleInterpolator(1);\n
+               break;\n
+           case R.id.reverse :\n
+               currentInterpolator=reverse;\n
+               break;\n
+           case R.id.custom :\n
+               currentInterpolator=custom;\n
+               break;\n
+           default:\n
+               break;\n
+       }\n
+       currentAnimation.setInterpolator(currentInterpolator);\n
+    }\n
+});\n
+</item>
 
-        <item>Anim2Fragment java</item>
+        <item>// there's no java needed</item>
 
-        <item>Anim3Fragment java</item>
+        <item> AnimationDrawable ad= (AnimationDrawable) findViewById(R.id.view_2).getBackground();
+        ad.setExitFadeDuration(1000);
+        ad.setEnterFadeDuration(1000);
+        ad.run();</item>
 
         <item>Anim4Fragment java</item>
 
