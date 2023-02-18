@@ -429,7 +429,7 @@ interpolatorGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListe
 });\n
 </item>
 
-        <item>// there's no java needed</item>
+        <item>// theres no java needed</item>
 
         <item> AnimationDrawable ad= (AnimationDrawable) findViewById(R.id.view_2).getBackground();
         ad.setExitFadeDuration(1000);
