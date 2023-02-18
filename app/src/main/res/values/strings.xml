@@ -305,30 +305,15 @@
     }\n
         }</item>
 
-        <item>Button btn = findViewById(R.id.btn_click_me);\n
-        EditText name = findViewById(R.id.ed_name_alert_dialog);\n
-        btn.setOnClickListener(new View.OnClickListener() {\n
-        \t    @Override\n
-        \t    public void onClick(View view) {\n
-        \t\t        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());\n
-        \t\t        dialog.setTitle("Welcome");\n
-        \t\t        dialog.setMessage("Hello "+String.valueOf(name.getText())+" this is an alert dialog." +
-                        "\nDo you want to delete your name ?");\n
-        \t\t        dialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {\n
-        \t\t\t          @Override\n
-        \t\t  \t        public void onClick(DialogInterface dialogInterface, int i) {\n
-        \t\t\t \t               name.setText("");\n
-        \t\t \t          }\n
-          \t\t      });\n
-         \t\t       dialog.setNegativeButton("no", new DialogInterface.OnClickListener() {\n
-           \t\t\t         @Override\n
-            \t\t\t        public void onClick(DialogInterface dialogInterface, int i) {\n
-            \t\t\t\t dialogInterface.dismiss();\n
-             \t\t\t       }\n
-            \t\t    });\n
-            \t\t    dialog.show();\n
-          \t  }\n
-        });</item>
+        <item>  private EditText name; \n
+    private Dialog dialog2; \n
+    private BottomSheetDialog dialog3; \n
+    private EditText age; \n
+            @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+
+             </item>
 
         <item>        Button button1 = findViewById(R.id.btn_fragment1); \n
         Button button2 = findViewById(R.id.btn_fragment2); \n \n
