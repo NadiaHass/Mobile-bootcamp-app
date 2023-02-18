@@ -1722,7 +1722,7 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
 
         <item>FragmentsFragment</item>
 
-        <item>Anim1Fragment</item>
+        <item>AnimFragment</item>
 
         <item>Anim2Fragment</item>
 

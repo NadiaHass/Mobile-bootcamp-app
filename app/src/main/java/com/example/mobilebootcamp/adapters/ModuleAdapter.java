@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mobilebootcamp.R;
 import com.example.mobilebootcamp.models.Module;
 import com.example.mobilebootcamp.ui.activities.LessonsActivity;
@@ -39,9 +41,9 @@ public class ModuleAdapter  extends RecyclerView.Adapter<ModuleAdapter.ModulesVi
             Module module = modules.get(position);
             openLessonsActivity(module.getStartLesson() , module.getEndLesson() , module.getName());
         });
-        //        Glide.with(context)
-//                .load(context.getResources().getIdentifier(image , "drawable" , context.getPackageName()))
-//                .into(holder.personImageView);
+                Glide.with(context)
+                .load(context.getResources().getIdentifier("image"+ (position + 1), "drawable" , context.getPackageName()))
+                .into(holder.imageView);
 
     }
 
@@ -60,10 +62,12 @@ public class ModuleAdapter  extends RecyclerView.Adapter<ModuleAdapter.ModulesVi
 
     public static class ModulesViewHolder extends RecyclerView.ViewHolder{
         public TextView moduleName , description;
+        public ImageView imageView;
         public ModulesViewHolder(@NonNull View itemView) {
             super(itemView);
             moduleName = (TextView) itemView.findViewById(R.id.tv_name);
             description = (TextView) itemView.findViewById(R.id.tv_description);
+            imageView = (ImageView) itemView.findViewById(R.id.iv_illustration);
 
         }
     }
