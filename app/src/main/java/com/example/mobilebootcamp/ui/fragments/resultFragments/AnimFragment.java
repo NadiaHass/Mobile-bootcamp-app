@@ -24,11 +24,9 @@ import android.widget.RadioGroup;
 import com.example.mobilebootcamp.R;
 
 public class AnimFragment extends Fragment {
-
     Animation scale,translate,rotate,alpha,currentAnimation;
     Interpolator reverse, custom, currentInterpolator;
     int duration=500;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +55,10 @@ public class AnimFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_anim, container, false);
         View moraba3=view.findViewById(R.id.moraba3);
-        Button play=view.findViewById(R.id.play);
         RadioGroup animGroup=view.findViewById(R.id.anim);
         RadioGroup durationGroup=view.findViewById(R.id.duration);
         RadioGroup interpolatorGroup=view.findViewById(R.id.interpolator);
-        play.setOnClickListener(new View.OnClickListener() {
+        moraba3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 moraba3.startAnimation(currentAnimation);

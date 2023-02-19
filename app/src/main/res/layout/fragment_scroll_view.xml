@@ -60,7 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
@@ -123,58 +123,58 @@
 
         android:columnCount="3">
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="0" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="1" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="2" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="3" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="4" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="5" />
 
-        <Button
+        <TextView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:backgroundTint="@color/color5"
+            android:background="@color/color5"
             android:gravity="center"
             android:text="6"
             android:layout_margin="10dp"/>
