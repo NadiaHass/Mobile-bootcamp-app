@@ -42,7 +42,7 @@ public class ModuleAdapter  extends RecyclerView.Adapter<ModuleAdapter.ModulesVi
             openLessonsActivity(module.getStartLesson() , module.getEndLesson() , module.getName());
         });
                 Glide.with(context)
-                .load(context.getResources().getIdentifier("image"+ (position + 1), "drawable" , context.getPackageName()))
+                .load(context.getResources().getIdentifier(modules.get(position).getImageName(), "drawable" , context.getPackageName()))
                 .into(holder.imageView);
 
     }

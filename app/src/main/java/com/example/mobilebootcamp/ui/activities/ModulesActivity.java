@@ -37,18 +37,18 @@ public class ModulesActivity extends AppCompatActivity {
 
     private ArrayList<Module> getModules() {
         ArrayList<Module> modules = new ArrayList<>();
-        modules.add(new Module("Widgets" , 0 , 9 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Layouts" , 9 , 15 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Containers" , 15 , 18 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Intent" , 18 , 22 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Menu & dialogs" , 22 , 26 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Fragments" , 26 , 27 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Styles & animation" , 27 , 31 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Dynamic views" , 31 , 33 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("SQLite" , 33 , 34 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Architecture components" , 34 , 36 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Room database" , 36 , 37 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
-        modules.add(new Module("Firebase" , 37 , 39 , "" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Widgets" , 0 , 9 , "image1" , "It's an element of a graphical user interface that displays information or provides a way to interact with the os"));
+        modules.add(new Module("Layouts" , 9 , 15 , "image2" , "It defines the structure for a user interface in your app"));
+        modules.add(new Module("Containers" , 15 , 18 , "image3" , " It's a view that is used to contain other views"));
+        modules.add(new Module("Intent" , 18 , 22 , "image4" , " It is mostly used to start activity, send broadcast receiver, start services and send message between two activities"));
+        modules.add(new Module("Menu & dialogs" , 22 , 26 , "image5" , "an important part of the UI component which is used to provide some common functionality around the app"));
+        modules.add(new Module("Fragments" , 26 , 27 , "image6" , "Customize your Android App with useful and convenient widgets on your home screen"));
+        modules.add(new Module("Styles & animation" , 27 , 31 , "image7" , "It's the part of Activity which represents a portion of User Interface(UI) on the screen."));
+        modules.add(new Module("Dynamic views" , 31 , 33 , "image8" , "It's the process of adding a motion effect to any view, image, or text"));
+        modules.add(new Module("SQLite" , 33 , 34 , "image9" , "when we don't want to have repeating XML code. We create a separate layout and inflate them"));
+        modules.add(new Module("Architecture components" , 34 , 36 , "image10" , "It's a new collection of libraries that contains the lifecycle-aware components"));
+        modules.add(new Module("Room database" , 36 , 37 , "image11" , "It's a part of the Android Architecture Components. It makes it easier to work with SQLiteDatabase"));
+        modules.add(new Module("Firebase" , 37 , 39 , "image12" , "It's a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services"));
         return modules;
     }
 
