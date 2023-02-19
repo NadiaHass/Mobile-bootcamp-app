@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.resultFragments.LinearLayoutFragment">
 
-
+    <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/view_0"
         android:layout_width="match_parent"
