@@ -58,12 +58,9 @@ public class AnimFragment extends Fragment {
         RadioGroup animGroup=view.findViewById(R.id.anim);
         RadioGroup durationGroup=view.findViewById(R.id.duration);
         RadioGroup interpolatorGroup=view.findViewById(R.id.interpolator);
-        moraba3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                moraba3.startAnimation(currentAnimation);
-            }
-        });
+        moraba3.setOnClickListener(view1 ->
+                moraba3.startAnimation(currentAnimation));
+
         animGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {

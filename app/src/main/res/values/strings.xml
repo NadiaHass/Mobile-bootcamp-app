@@ -60,10 +60,6 @@
 
         <item>Shapes</item>
 
-        <item>Anim3</item>
-
-        <item>Anim4</item>
-
         <item>List View</item>
 
         <item>RecyclerView</item>
@@ -149,8 +145,8 @@
                 @Override\n
                 public void onClick(View view) {\n
                     Intent intent = new Intent(this, NewActivity.class);\n
-                    intent.putExtra("name", String.valueOf(name.getText()));\n
-                    intent.putExtra("age", String.valueOf(age.getText()));\n
+                    intent.putExtra(\&quot;name\&quot;, String.valueOf(name.getText()));\n
+                    intent.putExtra(\&quot;age\&quot;, String.valueOf(age.getText()));\n
                     startActivity(intent);\n
                 }\n
             });\n
@@ -158,10 +154,10 @@
             TextView text;\n
             text = findViewById(R.id.tv_data_received);\n
             Intent intent = getIntent();\n
-            String str_name = intent.getStringExtra("name");\n
-            String str_age = intent.getStringExtra("age");\n
-            text.setText("Hello "+str_name+" in this new activity." +
-                "\nYour age: "+str_age);\n
+            String str_name = intent.getStringExtra(\&quot;name\&quot;);\n
+            String str_age = intent.getStringExtra(\&quot;age\&quot;);\n
+            text.setText(\&quot;Hello \&quot;+str_name+\&quot;in this new activity.\&quot; +
+                \&quot;\nYour age: \&quot;+str_age);\n
         </item>
 
         <item>
@@ -187,7 +183,7 @@
             @Override\n
             public void onClick(View view) {\n
                 Intent intent = new Intent(Intent.ACTION_SEND);\n
-                intent.setType("message/rfc822");\n
+                intent.setType(\&quot;message/rfc822\&quot;);\n
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[] {String.valueOf(email_dest.getText())});\n
                 intent.putExtra(Intent.EXTRA_SUBJECT, String.valueOf(subject.getText()));\n
                 intent.putExtra(Intent.EXTRA_TEXT, String.valueOf(content.getText()));\n
@@ -198,18 +194,18 @@
         <item>//MainActivity.java\n
             public class MainActivity extends AppCompatActivity {\n
             Frame frame;
-    @Override\n
+    \@Override\n
     protected void onCreate(Bundle savedInstanceState) {\n
         super.onCreate(savedInstanceState);\n
             frame = view.findViewById(R.id.menu_background);\n
             ...\n
             }\n
-        @Override\n
+        \@Override\n
         public boolean onCreateOptionsMenu(Menu menu) {\n
             getMenuInflater().inflate(R.menu.main_menu, menu);\n
             return true;\n
         }\n
-        @Override\n
+        \@Override\n
         public boolean onOptionsItemSelected(MenuItem item) {\n
           switch (item.getItemId()) {\n
                 case R.id.action_blue:\n
@@ -256,13 +252,13 @@
             @Override\n
             public boolean onMenuItemClick(MenuItem item) {\n
                 if (item.getItemId() == R.id.option1) {\n
-                    Toast.makeText(getContext(), "You choosed the first option", Toast.LENGTH_SHORT).show();\n
+                    Toast.makeText(getContext(), \&quot;You choosed the first option\&quot;, Toast.LENGTH_SHORT).show();\n
                     return true;\n
                 } else if (item.getItemId() == R.id.option2) {\n
-                    Toast.makeText(getContext(), "You choosed the second option", Toast.LENGTH_SHORT).show();\n
+                    Toast.makeText(getContext(), \&quot;You choosed the second option\&quot;, Toast.LENGTH_SHORT).show();\n
                     return true;\n
                 } else if (item.getItemId() == R.id.option3) {\n
-                    Toast.makeText(getContext(), "You choosed the third option", Toast.LENGTH_SHORT).show();\n
+                    Toast.makeText(getContext(), \&quot;You choosed the third option\&quot;, Toast.LENGTH_SHORT).show();\n
                     return true;\n
                 } else {\n
                     return false;\n
@@ -315,16 +311,16 @@
         \t    @Override\n
         \t    public void onClick(View view) {\n
         \t\t        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());\n
-        \t\t        dialog.setTitle("Welcome");\n
-        \t\t        dialog.setMessage("Hello "+String.valueOf(name.getText())+" this is an alert dialog." +
-                        "\nDo you want to delete your name ?");\n
-        \t\t        dialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {\n
+        \t\t        dialog.setTitle(\&quot;Welcome\&quot;);\n
+        \t\t        dialog.setMessage(\&quot;Hello \&quot;+String.valueOf(name.getText())+\&quot; this is an alert dialog.\&quot; +
+                       \&quot;\nDo you want to delete your name ?\&quot;);\n
+        \t\t        dialog.setPositiveButton(\&quot;yes\&quot;, new DialogInterface.OnClickListener() {\n
         \t\t\t          @Override\n
         \t\t  \t        public void onClick(DialogInterface dialogInterface, int i) {\n
-        \t\t\t \t               name.setText("");\n
+        \t\t\t \t               name.setText(\&quot; \&quot;);\n
         \t\t \t          }\n
           \t\t      });\n
-         \t\t       dialog.setNegativeButton("no", new DialogInterface.OnClickListener() {\n
+         \t\t       dialog.setNegativeButton(\&quot;no\&quot;, new DialogInterface.OnClickListener() {\n
            \t\t\t         @Override\n
             \t\t\t        public void onClick(DialogInterface dialogInterface, int i) {\n
             \t\t\t\t dialogInterface.dismiss();\n
@@ -349,13 +345,19 @@
 
         });</item>
 
-        <item>Anim1Fragment java</item>
+        <item> // define animations \n
+    scale= AnimationUtils.loadAnimation(getContext(),R.anim.scale); \n
+        translate =AnimationUtils.loadAnimation(getContext(),R.anim.translate); \n
+        rotate =AnimationUtils.loadAnimation(getContext(),R.anim.rotate); \n
+        alpha=AnimationUtils.loadAnimation(getContext(),R.anim.alpha);- \n
+.\n.\n.\n
+// start animation \n
+        ImageView img =view.findViewById(R.id.img); \n
+img.setOnClickListener(view1 -&gt; \n
+                img.startAnimation(currentAnimation)); \n</item>
 
-        <item>Anim2Fragment java</item>
+        <item>\n \n </item>
 
-        <item>Anim3Fragment java</item>
-
-        <item>Anim4Fragment java</item>
 
         <item>          String[] languages = {\&quot;Java\&quot; , \&quot;Kotlin\&quot; , \&quot;C++\&quot; , \&quot;Python\&quot; , \&quot;Ruby\&quot; , \&quot;C#\&quot; , \n
         \&quot;Php\&quot; , \&quot;Swift\&quot; , \&quot;Go\&quot; , \&quot;Pascal\&quot; , \&quot;Delphi\&quot; , \&quot;Html\&quot; , \&quot;Css\&quot; , \&quot;Sql\&quot; , \&quot;Matlab\&quot;}; \n \n
@@ -660,7 +662,129 @@ public class ScoreFragmentViewModel extends ViewModel { \n
             scoreTextView.setText(String.valueOf(scoreViewModel.score)); \n
         });\n</item>
 
-        <item>RoomDbFragment java</item>
+        <item>//Entity class (model) \n
+\@Entity(tableName = &quot;notes&quot;) \n
+public class Note {\n
+    \@PrimaryKey(autoGenerate = true) \n
+    private int id;\n
+    private String content;\n \n
+
+    public Note(int id, String content) {\n
+        this.id = id; \n
+        this.content = content;\n
+    }\n \n
+
+    public int getId() {\n
+        return id;\n
+    }\n\n
+
+    public void setId(int id) {\n
+        this.id = id;\n
+    }\n
+
+    public String getContent() {\n
+        return content;\n
+    }\n
+
+    public void setContent(String content) {\n
+        this.content = content;\n
+    }\n
+} \n \n
+// Notes DAO
+\@Dao
+public interface NoteDao { \n
+    \@Insert \n
+    void insert(Note note);\n \n
+
+    \@Delete\n
+    void delete(Note note);\n \n
+
+    \@Query(&quot;SELECT * FROM notes ORDER BY id DESC&quot;)\n
+    LiveData&lt;List&lt;Note&gt;&gt; getAllNotes();\n
+} \n \n
+
+// Notes database \n
+\@Database(entities = {Note.class}, version = 1) \n
+public abstract class NotesDatabase extends RoomDatabase {\n
+    private static NotesDatabase instance;\n \n
+
+    public abstract NoteDao noteDao();\n \n
+
+    public static synchronized NotesDatabase getInstance(Context context) {\n
+        if (instance == null) {\n
+            instance = Room.databaseBuilder(context.getApplicationContext(),\n
+                            NotesDatabase.class, &quot;note_database&quot;)\n
+                    .fallbackToDestructiveMigration()\n
+                    .build();\n
+        } \n
+        return instance;\n
+    } \n
+} \n \n
+// 	Notes ViewModel
+public class NotesViewModel extends AndroidViewModel { \n
+    private final NotesDatabase notesDatabase;\n \n
+
+    public NotesViewModel(Application application) {\n
+        super(application); \n
+        notesDatabase = NotesDatabase.getInstance(application.getApplicationContext()); \n
+    } \n \n
+
+    public void insertNote(Note note){ \n
+        new InsertNoteAsyncTask(notesDatabase).execute(note); \n
+    } \n \n
+
+    public LiveData&lt;List&lt;Note&gt;&gt; getAllNotes(){ \n
+        return notesDatabase.noteDao().getAllNotes();\n
+    } \n \n
+
+    public void deleteNote(Note note){\n
+        new DeleteNoteAsyncTask(notesDatabase).execute(note);\n
+    } \n \n
+
+
+    private static class DeleteNoteAsyncTask extends AsyncTask&lt;Note , Void , Void&gt;{ \n
+
+        private final NotesDatabase notesDatabase; \n
+
+        public DeleteNoteAsyncTask(NotesDatabase notesDatabase) { \n
+            this.notesDatabase = notesDatabase; \n
+        } \n
+
+        \@Override\n
+        protected Void doInBackground(Note... notes) { \n
+            notesDatabase.noteDao().delete(notes[0]);\n
+            return null;\n
+        }\n
+    }\n
+
+    private static class InsertNoteAsyncTask extends AsyncTask&lt;Note, Void, Void&gt; {\n
+        private NotesDatabase notesDatabase;\n
+        public InsertNoteAsyncTask(NotesDatabase notesDatabase) { \n
+            this.notesDatabase = notesDatabase;\n
+        }\n
+
+        \@Override \n
+        protected Void doInBackground(Note... notes) { \n
+            notesDatabase.noteDao().insert(notes[0]);\n
+            return null; \n
+        }\n
+
+    }\n
+} \n  \n
+
+// In mainActivity \n
+NotesViewModel notesViewModel = new ViewModelProvider(requireActivity())\n.get(NotesViewModel.class); \n
+
+// to add note  \n
+ notesViewModel.insertNote(new Note(0 , noteContent));\n
+
+//to get all notes to recyclerView \n
+        notesViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes1 -&gt; { \n
+            List&lt;Note&gt; notes  = notes1; \n
+            RoomNotesAdapter notesAdapter = new RoomNotesAdapter(notes  , notesViewModel); \n
+            recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() \n, RecyclerView.VERTICAL , false));\n
+            recyclerView.setAdapter(notesAdapter);\n
+        }); \n</item>
 
         <item>AuthFragment</item>
 
@@ -688,11 +812,110 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \nandroid:gravity=\&quot;center_horizontal|center_vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.DatePickerFragment\&quot;&gt; \n \n\&lt;DatePicker \nandroid:id=\&quot;@+id/datePicker\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_get_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:text=\&quot;Show date\&quot; /&gt; \n \n&lt;TextView \nandroid:id=\&quot;@+id/tv_date\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_margin=\&quot;16dp\&quot; \nandroid:textColor=\&quot;@color/black\&quot; \nandroid:textSize=\&quot;24sp\&quot; /&gt; \n&lt;/LinearLayout&gt; \n</item>
 
-        <item>FrameLayoutFragment xml</item>
+        <item>&lt;FrameLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n \n
+&gt;
 
-        <item>LinearLayoutFragment xml</item>
+    &lt;!-- TODO: Update blank fragment layout --&gt; \n
+    &lt;Button \n
+        android:id=\&quot;\@+id/view_0\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;40dp\&quot; \n
+        android:text=\&quot;0\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_1\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;40dp\&quot; \n
+        android:layout_gravity=\&quot;right\&quot; \n
+        android:text=\&quot;1\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_2\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;40dp\&quot; \n
+        android:layout_gravity=\&quot;bottom\&quot; \n
+        android:text=\&quot;2\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_3\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;40dp\&quot; \n
+        android:layout_gravity=\&quot;right|bottom\&quot; \n
+        android:text=\&quot;3\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_4\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;40dp\&quot; \n
+        android:layout_gravity=\&quot;center\&quot; \n
+        android:text=&quot;4&quot; /&gt; \n
+   . \n . \n . \n
 
-        <item>RelativeLayoutFragment xml</item>
+&lt;/FrameLayout&gt; \n</item>
+
+        <item>&lt;LinearLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    android:orientation=\&quot;vertical\&quot; \n \n
+   &gt; \n
+
+    &lt;!-- TODO: Update blank fragment layout --&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_0\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;60dp\&quot; \n
+        android:layout_margin=\&quot;8dp\&quot; \n
+        android:backgroundTint=\&quot;\@color/color1\&quot; \n
+        android:text=\&quot;0\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_1\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;60dp\&quot; \n
+        android:layout_margin=\&quot;8dp\&quot; \n
+        android:backgroundTint=\&quot;\@color/color1\&quot; \n
+        android:text=\\&quot;1&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_2\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;60dp\&quot; \n
+        android:layout_margin=\&quot;8dp\&quot; \n
+        android:backgroundTint=\&quot;\@color/color1\&quot; \n
+        android:text=&quot;2&quot; /&gt; \n
+.\n . \n
+&lt;/LinearLayout&gt; \n</item>
+
+        <item>&lt;RelativeLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+&gt; \n \n
+
+    &lt;!-- TODO: Update blank fragment layout --&gt; \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_0\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;48dp\&quot; \n
+        android:textAllCaps=\&quot;false\&quot; \n
+        android:backgroundTint=\&quot;\@color/color4\&quot; \n
+        android:text=\&quot;0\&quot; /&gt; \n \n
+    &lt;Button \n
+        android:id=\&quot;@+id/view_1\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;48dp\&quot; \n
+        android:backgroundTint=\&quot;@color/color4\&quot; \n
+        android:textAllCaps=\&quot;false\&quot; \n
+        android:layout_alignParentRight=\&quot;true\&quot; \n
+        android:text=\&quot;1\&quot; /&gt; \n
+    &lt;Button \n
+        android:id=\&quot;\@+id/view_2\&quot; \n
+        android:layout_width=\&quot;56dp\&quot; \n
+        android:layout_height=\&quot;48dp\&quot; \n
+        android:backgroundTint=\&quot;\@color/color4\&quot; \n
+        android:textAllCaps=\&quot;false\&quot; \n
+        android:layout_alignParentBottom=\&quot;true\&quot; \n
+        android:text=\&quot;2\&quot; /&gt; \n
+.\n .\n .\n
+&lt;/RelativeLayout &gt; \n</item>
 
         <item>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; \n
 &lt;GridLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; \n
@@ -1007,92 +1230,6 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 &lt;/ScrollView&gt; \n
 &lt;/HorizontalScrollView&gt; \n
 </item>
-
-        <item>&lt;ScrollView \n
-      android:layout_width=&quot;match_parent&quot; \n
-      android:layout_height=&quot;match_parent&quot; \n
-      android:background=&quot;@color/color0&quot;  &gt; \n
-      &lt;LinearLayout \n
-          android:layout_width=&quot;match_parent&quot; \n
-          android:layout_height=&quot;match_parent&quot; \n
-          android:orientation=&quot;vertical&quot; \n
-          android:padding=&quot;10dp&quot;&gt; \n
-
-          &lt;Button \n
-              android:id=&quot;@+id/btn_0&quot; \n
-              android:layout_width=&quot;match_parent&quot; \n
-              android:layout_height=&quot;80dp&quot; \n
-              android:backgroundTint=&quot;@color/color1&quot; \n
-              android:text=&quot;0&quot; /&gt; \n
-
-          &lt;Button ............./&gt; \n
-          &lt;Button ............./&gt; \n
-          &lt;Button ............./&gt; \n
-          &lt;Button ............./&gt; \n
-      &lt;/LinearLayout&gt; \n
-  &lt;/ScrollView&gt; \n
-
-    &lt;HorizontalScrollView \n
-        android:layout_width=&quot;match_parent&quot; \n
-        android:layout_height=&quot;match_parent&quot; \n
-        android:background=&quot;@color/color2&quot;&gt; \n
-
-        &lt;LinearLayout \n
-            android:layout_width=&quot;match_parent&quot; \n
-            android:layout_height=&quot;match_parent&quot; \n
-            android:layout_gravity=&quot;center&quot; \n
-            android:orientation=&quot;horizontal&quot;&gt; \n
-
-            &lt;Button \n
-                android:layout_width=&quot;60dp&quot; \n
-                android:layout_height=&quot;84dp&quot; \n
-                android:layout_margin=&quot;10dp&quot; \n
-                android:backgroundTint=&quot;@color/color3&quot; \n
-                android:text=&quot;0&quot; /&gt; \n
-
-             &lt;Button ............./&gt; \n
-             &lt;Button ............./&gt; \n
-             &lt;Button ............./&gt; \n
-             &lt;Button ............./&gt; \n
-             &lt;Button ............./&gt; \n
-        &lt;/LinearLayout&gt; \n
-    &lt;/HorizontalScrollView&gt; \n
-&lt;HorizontalScrollView \n
-    android:layout_width=&quot;match_parent&quot; \n
-    android:layout_height=&quot;match_parent&quot; \n
-    android:layout_weight=&quot;2&quot; \n
-    android:background=&quot;@color/color4&quot; &gt; \n
-&lt;ScrollView \n
-    android:layout_width=&quot;match_parent&quot; \n
-    android:layout_height=&quot;match_parent&quot; \n
-   &gt; \n
-    &lt;GridLayout \n
-        android:layout_width=&quot;match_parent&quot; \n
-        android:layout_height=&quot;match_parent&quot; \n
-        android:layout_margin=&quot;10dp&quot; \n
-
-        android:columnCount=&quot;3&quot;&gt; \n
-
-        &lt;TextView \n
-            android:layout_width=&quot;150dp&quot; \n
-            android:layout_height=&quot;150dp&quot; \n
-            android:layout_margin=&quot;10dp&quot; \n
-            android:background=&quot;@color/color5&quot; \n
-            android:gravity=&quot;center&quot; \n
-            android:text=&quot;0&quot; /&gt; \n
-
-        &lt;TextView ............./&gt; \n
-        &lt;TextView ............./&gt; \n
-        &lt;TextView ............./&gt; \n
-        &lt;TextView ............./&gt; \n
-        &lt;TextView ............./&gt; \n
-        &lt;TextView ............./&gt; \n
-
-
-    &lt;/GridLayout&gt; \n
-&lt;/ScrollView&gt; \n
-&lt;/HorizontalScrollView&gt; \n
-        </item>
         <item>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; \n
 &lt;LinearLayout \n
@@ -1490,13 +1627,134 @@ public class ScoreFragmentViewModel extends ViewModel { \n
 
         <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \nxmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \nxmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \nandroid:orientation=\&quot;vertical\&quot; \n \ntools:context=\&quot;.ui.fragments.resultFragments.FragmentsFragment\&quot;&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment1\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \nandroid:text=\&quot;Fragment 1\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n&lt;Button \nandroid:id=\&quot;@+id/btn_fragment2\&quot; \nandroid:layout_width=\&quot;wrap_content\&quot; \nandroid:layout_height=\&quot;wrap_content\&quot; \nandroid:layout_weight=\&quot;1\&quot; \nandroid:text=\&quot;Fragment 2\&quot; \nandroid:textAllCaps=\&quot;false\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment1\&quot;  \n/&gt; \n \n&lt;androidx.fragment.app.FragmentContainerView \nandroid:id=\&quot;@+id/container\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;0dp\&quot; \nandroid:layout_marginTop=\&quot;16dp\&quot; \napp:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \napp:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \napp:layout_constraintStart_toStartOf=\&quot;parent\&quot; \napp:layout_constraintTop_toBottomOf=\&quot;@id/btn_fragment2\&quot;  \n/&gt; \n&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
-        <item>Anim1Fragment xml</item>
+        <item>\\ alpha \n
+&lt;set xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;
+\n
+    android:duration=\&quot;500\&quot; \n
+    android:interpolator=\&quot;@android:anim/linear_interpolator\&quot; \n
+    android:fillAfter=\&quot;false\&quot;&gt; \n
+    &lt;alpha \n
+        android:fromAlpha=\&quot;0\&quot; \n
+        android:toAlpha=\&quot;1\&quot;/&gt; \n
 
-        <item>Anim2Fragment xml</item>
+&lt;/set&gt; \n \n
+// rotate \n
+&lt;set \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:duration=\&quot;500\&quot; \n
+    android:interpolator=\&quot;@android:anim/linear_interpolator\&quot; \n
+    android:fillAfter=\&quot;false\&quot;&gt; \n
+    &lt;rotate \n
+        android:fromDegrees=\&quot;0\&quot; \n
+        android:toDegrees=\&quot;360\&quot; \n
+        android:pivotX=\&quot;50%\&quot; \n
+        android:pivotY=\&quot;50%\&quot;/&gt; \n
+&lt;/set&gt; \n \n
+// scale \n
+&lt;set \n
+xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:duration=\&quot;500\&quot; \n
+    android:interpolator=\&quot;@android:anim/linear_interpolator\&quot; \n
+    android:fillAfter=\&quot;false\&quot;&gt; \n
+    &lt;scale \n
+        android:fromXScale=\&quot;0\&quot; \n
+        android:fromYScale=\&quot;0\&quot; \n
+        android:toXScale=\&quot;1\&quot; \n
+        android:toYScale=\&quot;1\&quot; \n
+        android:pivotX=\&quot;50%\&quot; \n
+        android:pivotY=\&quot;50%\&quot;/&gt; \n
+&lt;/set&gt; \n \n
+//translate
+&lt;set  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:duration=\&quot;500\&quot; \n
+    android:interpolator=&quot;@android:anim/linear_interpolator&quot; \n
+    android:fillAfter=\&quot;false\&quot;&gt;\n
 
-        <item>Anim3Fragment xml</item>
+    &lt;translate \n
+        android:fromXDelta=&quot;0%&quot; \n
+        android:fromYDelta=&quot;0%&quot; \n
+        android:toXDelta=&quot;50%&quot; \n
+        android:toYDelta=&quot;50%&quot; /&gt; \n
+&lt;/set&gt; \n
+        </item>
 
-        <item>Anim4Fragment xml</item>
+        <item>//oval 0 \n
+&lt;shape \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;oval\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color5\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+//oval 1 \n \
+&lt;shape  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;oval\&quot;&gt; \n
+    &lt;gradient android:type=\&quot;radial\&quot; \n
+        android:gradientRadius=\&quot;50%\&quot; \n
+        android:startColor=\&quot;@color/color1\&quot; \n
+        android:endColor=\&quot;@color/color3\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+//rectangle 0  \n
+&lt;shape  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;rectangle\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color3\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+// rectangle 1 \n
+&lt;shape  \n  xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;rectangle\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color3\&quot;/&gt; \n
+    &lt;corners android:radius=\&quot;24dp\&quot;/&gt;  \n
+&lt;/shape&gt; \n \n
+//rectangle 2 \n
+&lt;shape  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;rectangle\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color5\&quot;/&gt; \n
+    &lt;corners android:topLeftRadius=\&quot;32dp\&quot;  \n android:bottomRightRadius=\&quot;36dp\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+// rectangle 3 \n
+&lt;shape  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;rectangle\&quot;&gt; \n
+    &lt;gradient \n
+        android:angle=\&quot;45\&quot; \n
+        android:startColor=\&quot;@color/color1\&quot; \n
+        android:endColor=\&quot;@color/color3\&quot;/&gt; \n
+    &lt;corners android:radius=\&quot;24dp\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+//rectangle 4 \n
+&lt;shape   \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;rectangle\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color1\&quot;/&gt; \n
+    &lt;corners android:bottomLeftRadius=\&quot;24dp\&quot; \n
+        android:bottomRightRadius=\&quot;24dp\&quot;/&gt; \n
+    &lt;stroke \n
+        android:width=\&quot;8dp\&quot; \n
+        android:color=\&quot;@color/color3\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+// ring 0  \n
+&lt;shape  \n
+ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;ring\&quot; \n
+    android:useLevel=\&quot;false\&quot;&gt; \n
+    &lt;solid android:color=\&quot;@color/color3\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+// ring 1 \n
+&lt;shape  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    android:shape=\&quot;ring\&quot; \n
+    android:useLevel=\&quot;false\&quot;&gt; \n
+    &lt;gradient \n
+        android:startColor=\&quot;@android:color/transparent\&quot; \n
+        android:centerColor=\&quot;@android:color/transparent\&quot; \n
+        android:endColor=\&quot;@color/color5\&quot; \n
+        android:type=\&quot;radial\&quot; \n
+        android:gradientRadius=\&quot;50%\&quot;/&gt; \n
+&lt;/shape&gt; \n \n
+// selector \n
+&lt;selector  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot;&gt; \n
+    &lt;item android:state_checked=\&quot;false\&quot;  \n android:drawable=\&quot;@drawable/rectangle_1\&quot; /&gt; \n
+    &lt;item android:state_checked=\&quot;true\&quot;&gt; \n
+        &lt;shape android:shape=\&quot;rectangle\&quot;&gt; \n
+            &lt;solid android:color=\&quot;@color/color5\&quot;/&gt; \n
+            &lt;corners android:radius=\&quot;24dp\&quot;/&gt; \n
+        &lt;/shape&gt; \n
+    &lt;/item&gt; \n
+&lt;/selector&gt; \n
+</item>
 
         <item>&lt;FrameLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\n\&quot; \nxmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot; \n \tools:context=\&quot;.ui.fragments.resultFragments.ListViewFragment\&quot;&gt; \n \n&lt;ListView \nandroid:id=\&quot;@+id/list\&quot; \nandroid:layout_width=\&quot;match_parent\&quot; \nandroid:layout_height=\&quot;match_parent\&quot;/&gt; \n \n&lt;/FrameLayout&gt; \n</item>
 
@@ -1658,7 +1916,50 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
         android:text=\&quot;Increment\&quot; /&gt; \n
 &lt;/LinearLayout&gt; \n</item>
 
-        <item>RoomDbFragment xml</item>
+        <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:id=\&quot;@+id/frameLayout2\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.RoomDbFragment&quot;\&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_my_notes\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;36dp\&quot; \n
+        android:text=\&quot;My notes\ &quot; \n
+        android:fontFamily=\&quot;@font/poppins\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textStyle=\&quot;bold\&quot; \n
+        android:layout_marginStart=\&quot;20dp\&quot; \n
+        android:layout_marginTop=\&quot;20dp\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n
+
+    &lt;com.google.android.material.floatingactionbutton.FloatingAction \n Button \n
+        android:id=\&quot;@+id/floatingActionButton\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:layout_marginEnd=\&quot;32dp\&quot; \n
+        android:layout_marginBottom=\&quot;32dp\&quot;\n
+        android:clickable=\&quot;true\&quot; \n
+        android:src=\&quot;@drawable/ic_add\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        tools:ignore=\&quot;SpeakableTextPresentCheck\&quot; /&gt; \n \n
+
+    &lt;androidx.recyclerview.widget.RecyclerView \n
+        android:id=\&quot;@+id/rv_notes\&quot;  \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;0dp\&quot; \n
+        android:layout_marginTop=\&quot;16dp\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n \n
+        app:layout_constraintTop_toBottomOf=\&quot;@+id/tv_my_notes\&quot; /&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
         <item>AuthFragment</item>
 
@@ -1724,11 +2025,7 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
 
         <item>AnimFragment</item>
 
-        <item>Anim2Fragment</item>
-
-        <item>Anim3Fragment</item>
-
-        <item>Anim4Fragment</item>
+        <item>DrawFragment</item>
 
         <item>ListViewFragment</item>
 

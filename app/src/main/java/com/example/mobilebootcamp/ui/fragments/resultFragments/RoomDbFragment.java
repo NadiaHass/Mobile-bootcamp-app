@@ -2,27 +2,22 @@ package com.example.mobilebootcamp.ui.fragments.resultFragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mobilebootcamp.R;
-import com.example.mobilebootcamp.adapters.NotesAdapter;
 import com.example.mobilebootcamp.adapters.RoomNotesAdapter;
 import com.example.mobilebootcamp.models.content.Note;
 import com.example.mobilebootcamp.ui.fragments.resultFragments.viewModels.NotesViewModel;
-import com.example.mobilebootcamp.ui.fragments.resultFragments.viewModels.ScoreFragmentViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RoomDbFragment extends Fragment {

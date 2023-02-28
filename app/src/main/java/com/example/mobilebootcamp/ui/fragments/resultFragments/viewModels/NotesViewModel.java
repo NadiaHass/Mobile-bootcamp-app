@@ -49,6 +49,7 @@ public class NotesViewModel extends AndroidViewModel {
 
     private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void> {
         private NotesDatabase notesDatabase;
+
         public InsertNoteAsyncTask(NotesDatabase notesDatabase) {
             this.notesDatabase = notesDatabase;
         }
