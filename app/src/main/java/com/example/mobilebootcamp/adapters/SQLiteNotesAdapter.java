@@ -10,35 +10,39 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobilebootcamp.R;
+import com.example.mobilebootcamp.data.sqlite.NoteDatabaseHelper;
 import com.example.mobilebootcamp.models.content.Note;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder> {
-    private List<Note> notes;
+public class SQLiteNotesAdapter extends RecyclerView.Adapter<SQLiteNotesAdapter.NotesViewHolder> {
+    private ArrayList<Note> notes;
+    private NoteDatabaseHelper dbHelper;
 
-    public NotesAdapter(List<Note> notes) {
+    public SQLiteNotesAdapter(ArrayList<Note> notes, NoteDatabaseHelper dbHelper) {
         this.notes = notes;
+        this.dbHelper = dbHelper;
     }
 
 
     @NonNull
     @Override
-    public NotesAdapter.NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NotesAdapter.NotesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.note_rv_item , parent , false));
+    public SQLiteNotesAdapter.NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new SQLiteNotesAdapter.NotesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.note_rv_item , parent , false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotesAdapter.NotesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SQLiteNotesAdapter.NotesViewHolder holder, int position) {
         holder.noteContent.setText(notes.get(position).getContent());
 
-        holder.deleteImageView.setVisibility(View.GONE);
+        holder.deleteImageView.setOnClickListener(v -> {
+            dbHelper.deleteNoteById(notes.get(position).getId());
+        });
 
         holder.itemView.setOnClickListener(v -> {
             // put here the code if item is clicked
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -56,3 +60,4 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
         }
     }
 }
+

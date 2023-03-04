@@ -663,7 +663,7 @@ public class ScoreFragmentViewModel extends ViewModel { \n
         });\n</item>
 
         <item>//Entity class (model) \n
-\@Entity(tableName = &quot;notes&quot;) \n
+\@Entity(tableName = \&quot;notes\&quot;) \n
 public class Note {\n
     \@PrimaryKey(autoGenerate = true) \n
     private int id;\n
@@ -699,7 +699,7 @@ public interface NoteDao { \n
     \@Delete\n
     void delete(Note note);\n \n
 
-    \@Query(&quot;SELECT * FROM notes ORDER BY id DESC&quot;)\n
+    \@Query(\&quot;SELECT * FROM notes ORDER BY id DESC\&quot;)\n
     LiveData&lt;List&lt;Note&gt;&gt; getAllNotes();\n
 } \n \n
 
@@ -713,7 +713,7 @@ public abstract class NotesDatabase extends RoomDatabase {\n
     public static synchronized NotesDatabase getInstance(Context context) {\n
         if (instance == null) {\n
             instance = Room.databaseBuilder(context.getApplicationContext(),\n
-                            NotesDatabase.class, &quot;note_database&quot;)\n
+                            NotesDatabase.class, \&quot;note_database\&quot;)\n
                     .fallbackToDestructiveMigration()\n
                     .build();\n
         } \n
@@ -788,7 +788,56 @@ NotesViewModel notesViewModel = new ViewModelProvider(requireActivity())\n.get(N
 
         <item>AuthFragment</item>
 
-        <item>FirestoreFragment</item>
+        <item>   firebaseFirestore = FirebaseFirestore.getInstance(); \n
+
+        recyclerView = findViewById(R.id.rv_notes); \n
+        ProgressBar progressBar = findViewById(R.id.progressBar); \n
+        progressBar.setVisibility(View.VISIBLE); \n
+
+        // write data\n
+        addNoteToDb(new Note(0 , \&quot;My first note\&quot;));\n
+        addNoteToDb(new Note(1 , \&quot;My second note\&quot;));\n
+        addNoteToDb(new Note(2 , \&quot;My third note\&quot;));\n
+        addNoteToDb(new Note(0 , \&quot;My first note\&quot;));\n
+        addNoteToDb(new Note(1 , \&quot;My second note\&quot;));\n
+        addNoteToDb(new Note(2 , \&quot;My third note\&quot;));\n \n
+
+        //get and display data \n
+        firebaseFirestore.collection(\&quot;notes\&quot;)\n
+                .get()\n
+                .addOnCompleteListener(new \n OnCompleteListener&lt;QuerySnapshot&gt;() {\n
+                    \@Override\n
+                    public void onComplete(@NonNull \nTask&lt;QuerySnapshot&gt; task) {\n
+                        ArrayList&lt;Note&gt; notes = new ArrayList&lt;&gt;();\n
+
+                        for(QueryDocumentSnapshot document : task.getResult()){\n
+                            Note note = document.toObject(Note.class);\n
+                            notes.add(note);\n
+                            setupRecyclerView(notes);\n
+                            progressBar.setVisibility(View.GONE);\n\n
+
+                        }\n
+                    }\n
+                });\n
+
+
+    }\n\n
+
+    private void addNoteToDb(Note note) {\n\n
+        firebaseFirestore.collection(&quot;notes&quot;).document().\n set(note).addOnSuccessListener(new OnSuccessListener&lt;Void&gt;() { \n
+            \@Override \n
+            public void onSuccess(Void unused) { \n
+                // u can do something here\n
+            }\n
+        });\n
+    }\n\n
+
+    private void setupRecyclerView(ArrayList&lt;Note&gt; notes) {\n
+        NotesAdapter notesAdapter = new NotesAdapter(notes);\n
+        recyclerView.setLayoutManager(new \n LinearLayoutManager(requireActivity() , \n RecyclerView.VERTICAL , false));\n
+        recyclerView.setAdapter(notesAdapter);\n
+
+    }</item>
 
     </string-array>
 

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.mobilebootcamp.R;
-import com.example.mobilebootcamp.adapters.NotesAdapter;
+import com.example.mobilebootcamp.adapters.SQLiteNotesAdapter;
 import com.example.mobilebootcamp.data.sqlite.NoteDatabaseHelper;
 import com.example.mobilebootcamp.models.content.Note;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -72,7 +72,7 @@ public class SQLiteFragment extends Fragment {
 
     private void displayData() {
         ArrayList<Note> notes = dbHelper.getAllNotes();
-        NotesAdapter notesAdapter = new NotesAdapter(notes , dbHelper);
+        SQLiteNotesAdapter notesAdapter = new SQLiteNotesAdapter(notes , dbHelper);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity() , RecyclerView.VERTICAL , false));
         recyclerView.setAdapter(notesAdapter);
     }
