@@ -786,7 +786,52 @@ NotesViewModel notesViewModel = new ViewModelProvider(requireActivity())\n.get(N
             recyclerView.setAdapter(notesAdapter);\n
         }); \n</item>
 
-        <item>AuthFragment</item>
+        <item>// sign up activity code \n
+ signUpButton.setOnClickListener(v-&gt;{ \n
+            String email = editTextEmail.getText().toString(); \n
+            String password = editTextPassword.getText().toString(); \n \n
+
+            if ( email.equals(\&quot;\&quot;) || password.equals(\&quot;\&quot;)) {\n
+                Toast.makeText(requireActivity() ,\ &quot;Complete your data\&quot; , Toast.LENGTH_LONG).show(); \n
+            }else{ \n
+                mAuth.createUserWithEmailAndPassword(email , password).\n addOnCompleteListener(requireActivity() , task-&gt;{\n
+                    if (task.isSuccessful()){ \n
+                        Toast.makeText(requireActivity() , \&quot;createUserWithEmail:success\&quot; , Toast.LENGTH_LONG).show(); \n
+                        startActivity(new Intent(this , MainActivity.class)); \n
+                       finish(); \n
+
+                    }else{ \n
+                        Toast.makeText(requireActivity() , \&quot;createUserWithEmail:failure \&quot; + task.getException() , Toast.LENGTH_LONG).show(); \n
+                    } \n
+                } \n
+                ); \n
+            } \n
+        }); \n \n
+// sign in activity \n \n
+        signUpButton.setOnClickListener(v-&gt; { \n
+                    String email = editTextEmail.getText().toString(); \n
+                    String password = editTextPassword.getText().toString(); \n \n
+
+                    if (email.equals(\&quot;\&quot;) || password.equals(\&quot;\&quot;)) { \n
+                        Toast.makeText(this, \&quot;Complete your data\&quot;, Toast.LENGTH_LONG).show(); \n
+                    } else { \n
+                        mAuth.signInWithEmailAndPassword(email, password)
+                             \n   .addOnCompleteListener( requireActivity(), task -&gt; { \n
+                                    if (task.isSuccessful()) { \n
+                                        Toast.makeText(requireActivity(), \&quot;signInWithEmail:success\&quot;,
+                                                Toast.LENGTH_SHORT).show(); \n
+                                        startActivity(new Intent(this, MainActivity.class)); \n
+                                      finish(); \n
+                                    } else { \n
+                                        Toast.makeText(requireActivity(), \&quot;Authentication failed.\&quot;,
+                                                Toast.LENGTH_SHORT).show();- \n
+
+                                    } \n
+                                } \n
+                                ); \n
+                    } \n
+                }); \n
+</item>
 
         <item>   firebaseFirestore = FirebaseFirestore.getInstance(); \n
 
@@ -2010,9 +2055,159 @@ xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
         app:layout_constraintTop_toBottomOf=\&quot;@+id/tv_my_notes\&quot; /&gt; \n
 &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
-        <item>AuthFragment</item>
+        <item>&lt;androidx.constraintlayout.widget.ConstraintLayout  \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+android:layout_width=\&quot;match_parent\&quot; \n
+android:layout_height=\&quot;match_parent\&quot; \n
+tools:context=\&quot;.ui.fragments.resultFragments.AuthFragment\&quot;&gt; \n \n
 
-        <item>FirestoreFragment</item>
+&lt;TextView \n
+    android:id=\&quot;\@+id/textView4\&quot; \n
+    android:layout_width=\&quot;wrap_content\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot; \n
+    android:layout_marginStart=\&quot;32dp\&quot; \n
+    android:layout_marginTop=\&quot;32dp\&quot; \n
+    android:fontFamily=\&quot;\@font/poppins\&quot; \n
+    android:text=\&quot;Create Account\&quot; \n
+    android:textColor=\&quot;\@color/black\&quot; \n
+    android:textSize=\&quot;28sp\&quot; \n
+    android:textStyle=\&quot;bold\&quot; \n
+    app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+    app:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n
+
+
+&lt;LinearLayout \n
+    android:id=\&quot;\@+id/linear_layout\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot; \n
+    android:orientation=\&quot;vertical\&quot; \n
+    android:layout_marginTop=\&quot;64dp\&quot; \n
+    android:layout_marginStart=\&quot;32dp\&quot; \n
+    android:layout_marginEnd=\&quot;32dp\&quot; \n
+    app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+    app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+    app:layout_constraintTop_toBottomOf=\&quot;@id/textView4\&quot;&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;\@+id/textView7\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:fontFamily=\&quot;\@font/poppins\&quot; \n
+        android:textColor=\&quot;\@color/black\&quot; \n
+        android:layout_marginTop=\&quot;8dp\&quot; \n
+        android:textSize=\&quot;14sp\&quot; \n
+        android:text=\&quot;Email Address\&quot;/&gt; \n \n
+
+    &lt;EditText \n
+        android:id=\&quot;\@+id/et_address\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;50dp\&quot; \n
+        android:ems=\&quot;10\&quot; \n
+        android:padding=\&quot;8dp\&quot; \n
+        android:textSize=\&quot;16sp\&quot; \n
+        android:background=\&quot;\@drawable/edit_text_shape\&quot; \n
+        android:hint=\&quot;Enter your email address\&quot; \n
+        android:inputType=\&quot;textEmailAddress\&quot;/&gt; \n
+
+    &lt;TextView \n
+        android:id=\&quot;\@+id/textView8\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_content\&quot; \n
+        android:fontFamily=\&quot;\@font/poppins\&quot; \n
+        android:layout_marginTop=\&quot;8dp\&quot; \n
+        android:textSize=\&quot;14sp\&quot; \n
+        android:textColor=\&quot;\@color/black\&quot; \n
+        android:text=\&quot;Password\&quot; /&gt; \n \n
+
+    &lt;EditText \n
+        android:id=\&quot;\@+id/et_password\&quot; \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;50dp\&quot; \n
+        android:ems=\&quot;10\&quot; \n
+        android:textSize=\&quot;16sp\&quot; \n
+        android:hint=\&quot;Enter your password\&quot; \n
+        android:padding=\&quot;8dp\&quot; \n
+        android:background=\&quot;\@drawable/edit_text_shape\&quot; \n
+        android:inputType=\&quot;textPassword\&quot; /&gt; \n
+&lt;/LinearLayout&gt; \n \n
+
+&lt;Button \n
+    android:id=\&quot;\@+id/btn_sign_up\&quot; \n
+    android:layout_width=\&quot;300dp\&quot; \n
+    android:layout_height=\&quot;50dp\&quot; \n
+    android:layout_marginTop=\&quot;32dp\&quot; \n
+    android:text=\&quot;Sign Up\&quot; \n
+    android:textAllCaps=\&quot;false\&quot; \n
+    app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+    app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+    app:layout_constraintTop_toBottomOf=\&quot;\@id/linear_layout\&quot; /&gt; \n \n
+
+
+&lt;LinearLayout \n
+    android:layout_width=\&quot;300dp\&quot; \n
+    android:layout_height=\&quot;wrap_content\&quot; \n
+    android:orientation=\&quot;horizontal\&quot; \n
+    android:padding=\&quot;4dp\&quot; \n
+    android:layout_marginTop=\&quot;32dp\&quot; \n
+    app:layout_constraintTop_toBottomOf=\&quot;\@id/btn_sign_up\&quot; \n
+    app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+    app:layout_constraintStart_toStartOf=\&quot;parent\&quot;&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;\@+id/textView3\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;wrap_conten\t&quot; \n
+        android:layout_margin=\&quot;4dp\&quot; \n
+        android:textColor=\&quot;#7C7D7E\&quot; \n
+        android:textSize=\&quot;16sp\&quot; \n
+        android:fontFamily=\&quot;\@font/poppins\&quot; \n
+        android:text=\&quot;Already have an account?\&quot; /&gt; \n
+
+    &lt;TextView \n
+        android:id=\&quot;\@+id/tv_login\&quot;\n
+        android:layout_width=\&quot;wrap_content\&quot;\n
+        android:layout_height=\&quot;wrap_content\&quot;\n
+        android:layout_margin=\&quot;4dp\&quot;\n
+        android:textColor=\&quot;@color/black\&quot;\n
+        android:textSize=\&quot;16sp\&quot; \n
+        android:fontFamily=\&quot;\@font/poppins\&quot; \n
+        android:text=\&quot;Login\&quot; /&gt; \n
+&lt;/LinearLayout&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
+
+        <item>&lt;androidx.constraintlayout.widget.ConstraintLayout \n xmlns:android=\&quot;http://schemas.android.com/apk/res/android\&quot; \n
+    xmlns:app=\&quot;http://schemas.android.com/apk/res-auto\&quot; \n
+    xmlns:tools=\&quot;http://schemas.android.com/tools\&quot; \n
+    android:id=\&quot;@+id/frameLayout2\&quot; \n
+    android:layout_width=\&quot;match_parent\&quot; \n
+    android:layout_height=\&quot;match_parent\&quot; \n
+    tools:context=\&quot;.ui.fragments.resultFragments.RoomDbFragment&quot;\&gt; \n \n
+
+    &lt;TextView \n
+        android:id=\&quot;@+id/tv_my_notes\&quot; \n
+        android:layout_width=\&quot;wrap_content\&quot; \n
+        android:layout_height=\&quot;36dp\&quot; \n
+        android:text=\&quot;My notes\ &quot; \n
+        android:fontFamily=\&quot;@font/poppins\&quot; \n
+        android:textColor=\&quot;@color/black\&quot; \n
+        android:textSize=\&quot;24sp\&quot; \n
+        android:textStyle=\&quot;bold\&quot; \n
+        android:layout_marginStart=\&quot;20dp\&quot; \n
+        android:layout_marginTop=\&quot;20dp\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n
+        app:layout_constraintTop_toTopOf=\&quot;parent\&quot; /&gt; \n \n
+
+    &lt;androidx.recyclerview.widget.RecyclerView \n
+        android:id=\&quot;@+id/rv_notes\&quot;  \n
+        android:layout_width=\&quot;match_parent\&quot; \n
+        android:layout_height=\&quot;0dp\&quot; \n
+        android:layout_marginTop=\&quot;16dp\&quot; \n
+        app:layout_constraintBottom_toBottomOf=\&quot;parent\&quot; \n
+        app:layout_constraintEnd_toEndOf=\&quot;parent\&quot; \n
+        app:layout_constraintStart_toStartOf=\&quot;parent\&quot; \n \n
+        app:layout_constraintTop_toBottomOf=\&quot;@+id/tv_my_notes\&quot; /&gt; \n
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt; \n</item>
 
 
     </string-array>
